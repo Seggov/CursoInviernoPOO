@@ -1,0 +1,100 @@
+1;Ana Torres;Gerente General;3500000;true;true
+2;Carlos Muñoz;Gerente de Tecnología;3200000;true;true
+3;María Rojas;Gerente de Finanzas;3100000;true;true
+4;Jorge Silva;Gerente de Operaciones;3000000;true;true
+5;Camila Soto;Jefa de Recursos Humanos;2500000;true;true
+6;Diego Pérez;Jefe de Desarrollo;2700000;true;true
+7;Valentina Díaz;Jefa de Ventas;2600000;true;true
+8;Felipe Contreras;Jefe de Soporte;2400000;true;true
+9;Francisca Morales;Líder Backend;2200000;false;true
+10;Matías Herrera;Líder Frontend;2150000;false;true
+11;Daniela Fuentes;Líder de Datos;2300000;false;true
+12;Sebastián Castro;Líder de Infraestructura;2250000;false;true
+13;Catalina González;Líder de Diseño;2050000;false;true
+14;Nicolás Ramírez;Líder de Seguridad;2350000;false;true
+15;Fernanda Vega;Líder de Marketing;2100000;false;true
+16;Benjamín Araya;Líder de Proyectos;2200000;false;true
+17;Constanza Salazar;Líder de Calidad;2100000;false;true
+18;Tomás Navarro;Líder de Automatización;2250000;false;true
+19;Josefa Reyes;Líder Comercial;2150000;false;true
+20;Vicente Espinoza;Líder de Soporte Técnico;2050000;false;true
+21;Antonia Pizarro;Líder de Producto;2300000;false;true
+22;Martín Tapia;Líder de Redes;2150000;false;true
+23;Isidora Figueroa;Líder de Contabilidad;2100000;false;true
+24;Lucas Bustos;Líder de Aplicaciones;2200000;false;true
+25;Trinidad Campos;Líder de Reclutamiento;2000000;false;true
+26;Joaquín Parra;Líder de Integraciones;2250000;false;true
+27;Amanda Núñez;Líder de Experiencia de Usuario;2100000;false;true
+28;Agustín Leiva;Líder de Base de Datos;2300000;false;true
+29;Florencia Vidal;Desarrolladora Backend;1850000;false;false
+30;Maximiliano Medina;Desarrollador Backend;1800000;false;false
+31;Renata Cabrera;Desarrolladora Frontend;1750000;false;false
+32;Cristóbal Godoy;Desarrollador Frontend;1700000;false;false
+33;Emilia Cárdenas;Ingeniera de Datos;1950000;false;false
+34;Simón Peña;Analista de Datos;1650000;false;false
+35;Maite Valdés;Diseñadora UX;1600000;false;false
+36;Samuel Gallardo;Diseñador UI;1550000;false;false
+37;Julieta Sandoval;Analista Financiera;1750000;false;false
+38;Gaspar Alarcón;Contador;1600000;false;false
+39;Martina Jara;Ejecutiva de Ventas;1450000;false;false
+40;Bastián Moya;Ejecutivo de Ventas;1400000;false;false
+41;Sofía Zamora;Analista de Marketing;1500000;false;false
+42;Ignacio Valenzuela;Especialista SEO;1550000;false;false
+43;Paz Escobar;Encargada de Comunicaciones;1500000;false;false
+44;Bruno Lagos;Administrador de Sistemas;1800000;false;false
+45;Antonella Carrasco;Ingeniera de Software;1900000;false;false
+46;Franco Miranda;Ingeniero de Software;1900000;false;false
+47;Dominga Saavedra;Analista QA;1600000;false;false
+48;Álvaro Toledo;Tester de Software;1450000;false;false
+49;Mía Villarroel;Reclutadora;1450000;false;false
+50;Esteban Sepúlveda;Analista de Recursos Humanos;1500000;false;false
+51;Laura Henríquez;Secretaria Administrativa;1100000;false;false
+52;Rodrigo Bravo;Asistente Administrativo;1050000;false;false
+53;Paulina Cáceres;Analista de Operaciones;1550000;false;false
+54;Héctor Palma;Operador de Sistemas;1400000;false;false
+55;Alejandra Sanhueza;Soporte Técnico;1250000;false;false
+56;Gonzalo Farías;Soporte Técnico;1250000;false;false
+57;Carolina Donoso;Desarrolladora Java;1850000;false;false
+58;Patricio Riquelme;Desarrollador Java;1800000;false;false
+59;Rocío Urrutia;Desarrolladora Python;1900000;false;false
+60;Mauricio Yáñez;Desarrollador Python;1850000;false;false
+61;Claudia Poblete;Analista de Sistemas;1650000;false;false
+62;Ricardo Loyola;Arquitecto de Software;2400000;false;true
+63;Natalia Barría;Analista de Negocios;1700000;false;false
+64;Eduardo Carvajal;Ingeniero DevOps;2050000;false;false
+65;Lorena Cáceres;Especialista en Seguridad;2100000;false;false
+66;Andrés Acevedo;Administrador de Redes;1750000;false;false
+67;Paula Olivares;Ingeniera Cloud;2150000;false;false
+68;Marco Vergara;Ingeniero de Integraciones;1950000;false;false
+69;Verónica Cuevas;Product Owner;2050000;false;true
+70;Sergio Orellana;Scrum Master;2000000;false;true
+71;Inés Aravena;Analista de Producto;1650000;false;false
+72;Raúl Cornejo;Técnico de Redes;1300000;false;false
+73;Marcela Astudillo;Encargada de Compras;1450000;false;false
+74;Óscar Meza;Encargado de Inventario;1250000;false;false
+75;Teresa Cerda;Asistente Contable;1200000;false;false
+76;Cristian Neira;Auditor Interno;1750000;false;false
+77;Mónica Beltrán;Abogada Corporativa;2100000;false;false
+78;Pablo Quezada;Analista Legal;1650000;false;false
+79;Gabriela Alfaro;Ejecutiva de Atención;1150000;false;false
+80;René Villalobos;Ejecutivo de Atención;1150000;false;false
+81;Beatriz Salinas;Community Manager;1350000;false;false
+82;Nelson Vera;Analista de Publicidad;1450000;false;false
+83;Elisa Toro;Diseñadora Gráfica;1500000;false;false
+84;Fabián Ortiz;Editor Audiovisual;1550000;false;false
+85;Silvana Molina;Encargada de Capacitación;1500000;false;false
+86;Manuel Acuña;Instructor Técnico;1600000;false;false
+87;Karina Navarrete;Analista de Calidad;1550000;false;false
+88;Alexis Álvarez;Técnico de Calidad;1300000;false;false
+89;Bárbara Vásquez;Desarrolladora Mobile;1850000;false;false
+90;Víctor Marín;Desarrollador Mobile;1800000;false;false
+91;Noelia Aguirre;Especialista en Base de Datos;1950000;false;false
+92;Rubén Montoya;Administrador de Base de Datos;2000000;false;false
+93;Ángela Solís;Científica de Datos;2200000;false;false
+94;Emilio Ponce;Ingeniero de Machine Learning;2250000;false;false
+95;Pamela Rivas;Analista de Automatización;1750000;false;false
+96;César Guerra;Desarrollador RPA;1850000;false;false
+97;Adriana Maldonado;Asistente de Proyectos;1250000;false;false
+98;Jonathan Ríos;Practicante de Desarrollo;650000;false;false
+99;Fabiola Vallejos;Practicante de Recursos Humanos;600000;false;false
+100;Leonardo Espina;Practicante de Datos;650000;false;false
