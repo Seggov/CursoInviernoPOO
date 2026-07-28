@@ -1,0 +1,12 @@
+Escribe un programa en Java que permita cargar una empresa de ejemplo y reporte los siguientes datos:
+
+Mostrar todos los departamentos de la empresa.
+Mostrar todos los proyectos de la empresa.
+Aumentar el sueldo de un empleado, buscándolo por nombre.
+No se puede hacer un aumento negativo.
+Buscar un empleado por nombre y mostrar en qué departamento(s) y proyecto(s) aparece.
+Eliminar un Proyecto por su ID.
+Eliminar un Departamento por su ID.
+Despedir un empleado.
+Para proteger los datos, se deberá ingresar una contraseña antes de poder eliminar algo o despedir un empleado.
+Al eliminar un dato, se debe buscar y eliminar toda referencia.
