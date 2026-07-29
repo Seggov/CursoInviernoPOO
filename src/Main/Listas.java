@@ -4,150 +4,199 @@ import java.util.Arrays;
 
 public class Listas {
 
-    // Arreglo con capacidad máxima de 12 números.
+    /*
+     * Arreglo que almacena los elementos de la lista.
+     * Tiene una capacidad máxima de 12 valores.
+     */
     private int[] lista = new int[12];
 
     /*
-     * Indica cuántos elementos reales hay guardados.
-     * Por ejemplo, si cantidad = 4, los elementos válidos
-     * están en las posiciones 0, 1, 2 y 3.
+     * Indica cuántos elementos reales hay en la lista.
+     * Las posiciones desde 0 hasta cantidad - 1 contienen datos válidos.
      */
     private int cantidad = 0;
 
     public static void main(String[] args) {
         Listas programa = new Listas();
-
-        // Agregamos algunos elementos a la lista.
-        programa.insertar(0, 1);
-        programa.insertar(1, 4);
-        programa.insertar(2, 5);
-        programa.insertar(3, 6);
-
-        // Inserta 50 en la posición 2.
-        programa.insertar(2, 50);
-
-        // Elimina el elemento que está en la posición 1.
-        programa.eliminar(1);
-
-        // Muestra el arreglo completo.
-        System.out.println(Arrays.toString(programa.lista));
+        programa.iniciar();
     }
 
     /**
-     * Inserta un elemento en una posición específica de la lista.
+     * Ejecuta ejemplos de inserción ordenada, eliminación y búsqueda binaria.
+     */
+    private void iniciar() {
+
+        /*
+         * Se insertan ordenadamente para que la lista quede:
+         * [3, 7, 25, 43, 56]
+         */
+        insertarOrdenado(25);
+        insertarOrdenado(7);
+        insertarOrdenado(56);
+        insertarOrdenado(3);
+        insertarOrdenado(43);
+
+        System.out.println("Lista ordenada:");
+        mostrarLista();
+
+        /*
+         * Busca el número 25.
+         * La búsqueda binaria funciona solamente sobre una lista ordenada.
+         */
+        int posicion = buscarBinaria(25);
+
+        if (posicion != -1) {
+            System.out.println("El número 25 está en el índice: " + posicion);
+        } else {
+            System.out.println("El número 25 no fue encontrado.");
+        }
+
+        // Elimina el valor que está en el índice 2: el número 25.
+        eliminar(2);
+
+        System.out.println("Lista después de eliminar el índice 2:");
+        mostrarLista();
+    }
+
+    /**
+     * Muestra el arreglo completo y la cantidad de elementos válidos.
+     */
+    private void mostrarLista() {
+        System.out.println(Arrays.toString(lista));
+        System.out.println("Cantidad de elementos: " + cantidad);
+    }
+
+    /**
+     * Inserta un elemento en un índice específico.
      *
-     * Antes de insertar, mueve una posición a la derecha todos
-     * los elementos que estén desde el índice indicado hacia adelante.
+     * Para hacer espacio, desplaza una posición a la derecha todos los
+     * elementos ubicados desde el índice indicado hacia adelante.
      *
      * Ejemplo:
-     * Lista:    [1, 4, 5, 6]
+     * Lista: [1, 4, 5, 6]
      * insertar(2, 50)
      * Resultado: [1, 4, 50, 5, 6]
      *
      * @param indice posición donde se insertará el elemento.
-     * @param elemento número que se desea guardar.
+     * @param elemento número que se desea insertar.
      */
     private void insertar(int indice, int elemento) {
 
-        // Un índice válido puede ir desde 0 hasta cantidad.
-        // Se permite cantidad porque se puede agregar al final.
+        // Es válido insertar desde el índice 0 hasta cantidad.
         if (indice < 0 || indice > cantidad) {
-            System.out.println("Índice inválido");
+            System.out.println("Índice inválido.");
             return;
         }
 
-        // Si cantidad es igual al tamaño máximo, ya no hay espacio.
+        // Si cantidad llegó al tamaño del arreglo, no queda espacio.
         if (cantidad == lista.length) {
-            System.out.println("Lista llena");
+            System.out.println("Lista llena.");
             return;
         }
 
         /*
-         * Se recorren los elementos de derecha a izquierda.
-         * Esto evita sobrescribir un valor antes de moverlo.
+         * El recorrido es de derecha a izquierda.
+         * Así no se sobrescribe un elemento antes de moverlo.
          */
         for (int i = cantidad; i > indice; i--) {
             lista[i] = lista[i - 1];
         }
 
-        // Se guarda el nuevo elemento en la posición solicitada.
         lista[indice] = elemento;
-
-        // Ahora existe un elemento más en la lista.
         cantidad++;
-    }
-
-    /**
-     * Elimina el elemento de una posición específica.
-     *
-     * Para eliminarlo, mueve una posición a la izquierda todos los
-     * elementos que están después de él.
-     *
-     * Ejemplo:
-     * Lista:     [1, 4, 50, 5, 6]
-     * eliminar(1)
-     * Resultado: [1, 50, 5, 6]
-     *
-     * @param indice posición del elemento que se desea eliminar.
-     */
-    private void eliminar(int indice) {
-
-        // Solo se pueden eliminar posiciones que realmente tienen datos.
-        if (indice < 0 || indice >= cantidad) {
-            System.out.println("Índice inválido");
-            return;
-        }
-
-        /*
-         * Se copia cada elemento siguiente en la posición anterior.
-         * De esa forma se “tapa” el espacio del elemento eliminado.
-         */
-        for (int i = indice; i < cantidad - 1; i++) {
-            lista[i] = lista[i + 1];
-        }
-
-        // Disminuye la cantidad porque ahora hay un elemento menos.
-        cantidad--;
-
-        // Se limpia el último espacio que quedó repetido.
-        lista[cantidad] = 0;
     }
 
     /**
      * Inserta un elemento manteniendo la lista ordenada de menor a mayor.
      *
-     * Este método supone que los elementos que ya están en la lista
-     * se encuentran ordenados previamente.
+     * Busca la posición adecuada y utiliza insertar() para desplazar
+     * los valores y guardar el nuevo elemento.
      *
-     * Ejemplo:
-     * Lista: [1, 4, 5, 8]
-     * insertarOrdenado(6)
-     * Resultado: [1, 4, 5, 6, 8]
-     *
-     * @param elemento número que se quiere insertar ordenadamente.
+     * @param elemento número que se desea insertar ordenadamente.
      */
     private void insertarOrdenado(int elemento) {
 
-        // No se puede insertar si no hay espacio.
         if (cantidad == lista.length) {
-            System.out.println("Lista llena");
+            System.out.println("Lista llena.");
             return;
         }
 
         int posicion = 0;
 
         /*
-         * Avanza mientras:
-         * - Aún existan elementos válidos.
-         * - El elemento actual sea menor que el que queremos insertar.
-         *
-         * Al terminar, posicion indica dónde debe ir el nuevo elemento.
+         * Avanza mientras el valor actual sea menor que el nuevo elemento.
+         * Al terminar, posicion corresponde al lugar correcto para insertarlo.
          */
         while (posicion < cantidad && lista[posicion] < elemento) {
             posicion++;
         }
 
-        // Reutilizamos insertar para mover los elementos y guardar el valor.
         insertar(posicion, elemento);
+    }
+
+    /**
+     * Elimina el elemento ubicado en el índice recibido.
+     *
+     * Los elementos posteriores se desplazan una posición a la izquierda
+     * para cubrir el espacio que dejó el elemento eliminado.
+     *
+     * Ejemplo:
+     * Lista: [10, 20, 30, 40]
+     * eliminar(1)
+     * Resultado: [10, 30, 40]
+     *
+     * @param indice posición del elemento que se desea eliminar.
+     */
+    private void eliminar(int indice) {
+
+        if (indice < 0 || indice >= cantidad) {
+            System.out.println("Índice inválido.");
+            return;
+        }
+
+        /*
+         * Cada elemento posterior toma el lugar del anterior.
+         */
+        for (int i = indice; i < cantidad - 1; i++) {
+            lista[i] = lista[i + 1];
+        }
+
+        cantidad--;
+
+        // Limpia la última posición que quedó repetida.
+        lista[cantidad] = 0;
+    }
+
+    /**
+     * Busca un número en una lista ordenada mediante búsqueda binaria.
+     *
+     * En cada iteración revisa el elemento central:
+     * - Si es el elemento buscado, retorna su posición.
+     * - Si el buscado es menor, continúa en la mitad izquierda.
+     * - Si el buscado es mayor, continúa en la mitad derecha.
+     *
+     * @param elemento número que se desea buscar.
+     * @return el índice del elemento si existe; -1 si no existe.
+     */
+    private int buscarBinaria(int elemento) {
+
+        int inicio = 0;
+        int fin = cantidad - 1;
+
+        while (inicio <= fin) {
+            int medio = (inicio + fin) / 2;
+
+            if (lista[medio] == elemento) {
+                return medio;
+            }
+
+            if (elemento < lista[medio]) {
+                fin = medio - 1;
+            } else {
+                inicio = medio + 1;
+            }
+        }
+
+        return -1;
     }
 }
