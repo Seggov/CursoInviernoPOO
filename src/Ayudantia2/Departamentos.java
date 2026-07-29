@@ -5,13 +5,13 @@ public class Departamentos {
 	private int id;
 	private String nombre;
 	private int jefeDepartamento;
-	private int empleadoDepartamento;
-	public Departamentos(int id, String nombre, int jefeDepartamento, int empleadoDepartamento) {
+	private int[] empleadoDepartamento;
+	public Departamentos(int id, String nombre, int jefeDepartamento, int[] listaEmpleadosDepartamentos) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.jefeDepartamento = jefeDepartamento;
-		this.empleadoDepartamento = empleadoDepartamento;
+		this.empleadoDepartamento = listaEmpleadosDepartamentos;
 	}
 	
 	
@@ -94,7 +94,7 @@ public class Departamentos {
 
 
 
-	public int getEmpleadoDepartamento() {
+	public int[] getEmpleadoDepartamento() {
 		return empleadoDepartamento;
 	}
 

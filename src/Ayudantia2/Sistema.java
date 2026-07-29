@@ -55,13 +55,27 @@ public class Sistema {
 
 			System.out.println(
 					"Ahora indique el nombre de un empleado que dese identificar su estado actual \n (=) Nombre Completo");
-
+			String entradaEmpleado = ENTRADA.nextLine();
+			
+			buscarEmpleado(entradaEmpleado);
 		}
 		// ESCEPCIONES - MANEJO DE ERRORES
 		catch (FileNotFoundException e) {
 			System.out.println("ERORR DE ARCHIVOS CSV");
 		}
 
+	}
+	
+	private void buscarEmpleado(String entradaEmpleado) {
+		for (int i = 0; i < lista_departamentos.length; i++) {
+			int auxIDE_trabajador = lista_Trabajadores[i].getID();
+			String auxNOMBRE_trabajador = lista_Trabajadores[i].getNombre();
+			
+			if (auxNOMBRE_trabajador.equals(entradaEmpleado)){
+				
+				//lista_Trabajadores[i].get
+			}
+		}
 	}
 
 	private boolean esNegativo(double usuarioNuevoSueldo) {
@@ -135,6 +149,7 @@ public class Sistema {
 		File file = new File(ruta);
 		Scanner entrada = new Scanner(file);
 		int contador = 0;
+		int[] listaEmpleadosDepartamentos = new int[10];
 
 		while (entrada.hasNextLine()) {
 
@@ -146,8 +161,9 @@ public class Sistema {
 			int jefeDepartamento = Integer.parseInt(partes[2]);
 
 			int empleadosDepartamento = Integer.parseInt(partes[3].replace("\"", ""));
+			listaEmpleadosDepartamentos[contador] = empleadosDepartamento;
 
-			Departamentos departamento = new Departamentos(id, nombre, jefeDepartamento, empleadosDepartamento);
+			Departamentos departamento = new Departamentos(id, nombre, jefeDepartamento, listaEmpleadosDepartamentos);
 
 			lista_departamentos[contador] = departamento;
 			contador++;
@@ -161,8 +177,8 @@ public class Sistema {
 		File file = new File(ruta);
 		Scanner entrada = new Scanner(file);
 		int contador = 0;
-
-		while (entrada.hasNextLine()) {
+		int[] listaEmpleadosProyecto = new int[10];
+;		while (entrada.hasNextLine()) {
 
 			String linea = entrada.nextLine();
 			String[] partes = linea.split(",");
@@ -172,11 +188,12 @@ public class Sistema {
 			double presupuestoProyecto = Double.parseDouble(partes[2]);
 
 			int liderProyecto = Integer.parseInt(partes[3]);
-
+			
 			int empleadosProyectos = Integer.parseInt(partes[4].replace("\"", ""));
-
-			Proyectos proyecto = new Proyectos(id, nombre, presupuestoProyecto, liderProyecto, empleadosProyectos);
-
+			
+			listaEmpleadosProyecto[contador] = empleadosProyectos;
+			Proyectos proyecto = new Proyectos(id, nombre, presupuestoProyecto, liderProyecto, listaEmpleadosProyecto);
+			
 			lista_Proyectos[contador] = proyecto;
 			contador++;
 		}
