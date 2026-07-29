@@ -5,18 +5,14 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Sistema {
-	
-	
-	
+
 	private Trabajador[] lista_Trabajadores = new Trabajador[100];
 	private Departamentos[] lista_departamentos = new Departamentos[100];
 	private Proyectos[] lista_Proyectos = new Proyectos[100];
 	private final Scanner ENTRADA = new Scanner(System.in);
-	
-	
+
 	private String CONTRA = "17";
-	
-	
+
 	public void Iniciar() {
 
 		try {
@@ -24,9 +20,9 @@ public class Sistema {
 			lecturaEmpleados("empleados.csv");
 			lecturaProyectos("proyectos.csv");
 			lecturaDepartamentos("departamentos.csv");
-		
+
 			verificarContraValida();
-			
+
 			// Mostrar Departamentos de la Empresa
 			System.out.println("DEPARTAMENTOS DE EMPRESA \n");
 			mostrarDepartamentos();
@@ -35,218 +31,175 @@ public class Sistema {
 			System.out.println("PROYECTOS DE EMPRESA \n");
 			mostrarProyectosEmpresa();
 			System.out.println("");
-			
+
 			while (esCambiar()) {
-				
+
 				mostrarRoles();
-				System.out.println("Tienes que cambiar SI O SI EL SUELDO DE UN EMPLEADO ¿A quien eligues? menciona su ID \n ");
-				int usuario_identificador = ENTRADA.nextInt();
-				System.out.println("Excelente, buscando "+usuario_identificador+"..... \n");
-				double usuario_NuevoSueldos = ENTRADA.nextDouble();
-				
-				
-				
-				cambiarSueldo(usuario_identificador,usuario_NuevoSueldos);
+
+				System.out.println("Debes cambiar el sueldo de un empleado.");
+				System.out.println("Indica su ID:");
+
+				int usuarioIdentificador = Integer.parseInt(ENTRADA.nextLine());
+
+				System.out.println("Indica el nuevo sueldo:");
+
+				double usuarioNuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
+
+				cambiarSueldo(usuarioIdentificador, usuarioNuevoSueldo);
+
+				System.out.println("Sueldo actualizado.");
 				mostrarRoles();
-				
 			}
 
-		
-		
-		} 
-		// ESCEPCIONES  - MANEJO DE ERRORES
+		}
+		// ESCEPCIONES - MANEJO DE ERRORES
 		catch (FileNotFoundException e) {
-			System.out.println("ERORR DE ARCHIVOS CSV");}
-		
+			System.out.println("ERORR DE ARCHIVOS CSV");
+		}
 
 	}
+
 	private boolean esCambiar() {
-		System.out.println("¿Quieres cambiar un Sueldo?");
-		System.out.println("(1) Si \n (2) No \n (3)  Ni de coña, Salir ");
-		
-		String usuario_axuliar =ENTRADA.nextLine();
-		if (usuario_axuliar.equals("1")) {
-			return true;
-		}
-		else if (usuario_axuliar.equals("2")) {
-			return false;
-		}	
-		return false;
+		System.out.println("¿Quieres cambiar un sueldo?\n(1) Si\n(2) No");
+		String opcion = ENTRADA.nextLine();
+		return opcion.equals("1");
 	}
 	// ID,Nombre,Jefe_ID,Empleados_ID
 	// ID,Nombre,Jefe_ID,Empleados_ID
 
 	private void cambiarSueldo(int identificador, double sueldoNuevo) {
 		for (int i = 0; i < lista_Trabajadores.length; i++) {
-			if (lista_Trabajadores[i]==null) {
+			if (lista_Trabajadores[i] == null) {
 				continue;
-			}
-			else if ((lista_Trabajadores[i].getID())==(identificador)) {
+			} else if ((lista_Trabajadores[i].getID()) == (identificador)) {
 				lista_Trabajadores[i].setSueldo(sueldoNuevo);
 			}
-			
-			
-			
 		}
 	}
-		
-	
 
 	private void mostrarRoles() {
 		for (int i = 0; i < lista_Trabajadores.length; i++) {
-			if (lista_Trabajadores[i]==null) {
+			if (lista_Trabajadores[i] == null) {
 				continue;
 			}
-			
-			System.out.println(lista_Trabajadores[i].getID()+"- "+lista_Trabajadores[i].getPuesto()+" sueldo actual |"+lista_Trabajadores[i].getSueldo()+" Hora|");
-			
-			
+
+			System.out.println(lista_Trabajadores[i].getID() + "- " + lista_Trabajadores[i].getPuesto()
+					+ " sueldo actual |" + lista_Trabajadores[i].getSueldo() + " Hora|");
+
 		}
 	}
-		
-		
-	
 
 	private void mostrarProyectosEmpresa() {
-		
+
 		for (int i = 0; i < lista_Proyectos.length; i++) {
-			if (lista_Proyectos[i]==null) {
+			if (lista_Proyectos[i] == null) {
 				continue;
 			}
-			
-			System.out.println(lista_Proyectos[i].getId()+"- "+lista_Proyectos[i].getNombre());
-			
-			
+
+			System.out.println(lista_Proyectos[i].getId() + "- " + lista_Proyectos[i].getNombre());
+
 		}
-		
+
 	}
 
 	private void mostrarDepartamentos() {
-		
+
 		for (int i = 0; i < lista_departamentos.length; i++) {
-			if (lista_departamentos[i]==null) {
+			if (lista_departamentos[i] == null) {
 				continue;
 			}
-			System.out.println(lista_departamentos[i].getId()+"- "+lista_departamentos[i].getNombre());
+			System.out.println(lista_departamentos[i].getId() + "- " + lista_departamentos[i].getNombre());
 		}
 	}
 
 	private boolean verificarContraValida() {
 		return false;
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	private void lecturaDepartamentos(String ruta)
-	        throws FileNotFoundException {
 
-	    File file = new File(ruta);
-	    Scanner entrada = new Scanner(file);
-	    int contador = 0;
+	private void lecturaDepartamentos(String ruta) throws FileNotFoundException {
 
-	    while (entrada.hasNextLine()) {
-	    	
-	        String linea = entrada.nextLine();
-	        String[] partes =linea.split(",");
+		File file = new File(ruta);
+		Scanner entrada = new Scanner(file);
+		int contador = 0;
 
-	        int id = Integer.parseInt(partes[0]);
-	        String nombre = partes[1];
-	        int jefeDepartamento = Integer.parseInt(partes[2]);
+		while (entrada.hasNextLine()) {
 
-	        int empleadosDepartamento =Integer.parseInt(partes[3].replace("\"", ""));
+			String linea = entrada.nextLine();
+			String[] partes = linea.split(",");
 
-	        Departamentos departamento = new Departamentos(id,nombre,jefeDepartamento,empleadosDepartamento);
-	        
-	        lista_departamentos[contador] = departamento;
-	        contador++;
-	    }
+			int id = Integer.parseInt(partes[0]);
+			String nombre = partes[1];
+			int jefeDepartamento = Integer.parseInt(partes[2]);
 
-	    entrada.close();
+			int empleadosDepartamento = Integer.parseInt(partes[3].replace("\"", ""));
+
+			Departamentos departamento = new Departamentos(id, nombre, jefeDepartamento, empleadosDepartamento);
+
+			lista_departamentos[contador] = departamento;
+			contador++;
+		}
+
+		entrada.close();
 	}
-	
-	
-	
 
 	private void lecturaProyectos(String ruta) throws FileNotFoundException {
 
-	    File file = new File(ruta);
-	    Scanner entrada = new Scanner(file);
-	    int contador = 0;
+		File file = new File(ruta);
+		Scanner entrada = new Scanner(file);
+		int contador = 0;
 
-	    while (entrada.hasNextLine()) {
+		while (entrada.hasNextLine()) {
 
-	        String linea = entrada.nextLine();
-	        String[] partes = linea.split(",");
+			String linea = entrada.nextLine();
+			String[] partes = linea.split(",");
 
-	        int id = Integer.parseInt(partes[0]);
-	        String nombre = partes[1];
-	        double presupuestoProyecto = Double.parseDouble(partes[2]);
+			int id = Integer.parseInt(partes[0]);
+			String nombre = partes[1];
+			double presupuestoProyecto = Double.parseDouble(partes[2]);
 
-	        int liderProyecto = Integer.parseInt(partes[3]);
+			int liderProyecto = Integer.parseInt(partes[3]);
 
-	        int empleadosProyectos = Integer.parseInt(partes[4].replace("\"", ""));
-	        
-	        Proyectos proyecto = new Proyectos(
-	                id,
-	                nombre,
-	                presupuestoProyecto,
-	                liderProyecto,
-	                empleadosProyectos
-	        );
+			int empleadosProyectos = Integer.parseInt(partes[4].replace("\"", ""));
 
-	        lista_Proyectos[contador] = proyecto;
-	        contador++;
-	    }
-	    entrada.close();
+			Proyectos proyecto = new Proyectos(id, nombre, presupuestoProyecto, liderProyecto, empleadosProyectos);
+
+			lista_Proyectos[contador] = proyecto;
+			contador++;
+		}
+		entrada.close();
 	}
 
 	private void lecturaEmpleados(String ruta) throws FileNotFoundException {
 
-	    File file = new File(ruta);
-	    Scanner entrada = new Scanner(file);
-	    int contador = 0;
+		File file = new File(ruta);
+		Scanner entrada = new Scanner(file);
+		int contador = 0;
 
-	    entrada.nextLine();	
+		entrada.nextLine();
 
-	    while (entrada.hasNextLine()) {
-	        String linea = entrada.nextLine();
-	        String[] partes = linea.split(",");
+		while (entrada.hasNextLine()) {
+			String linea = entrada.nextLine();
+			String[] partes = linea.split(",");
 
-	        int id = Integer.parseInt(partes[0]);
-	        String nombre = partes[1];
-	        String rol = partes[2];
+			int id = Integer.parseInt(partes[0]);
+			String nombre = partes[1];
+			String rol = partes[2];
 
-	        int sueldo = (int) Double.parseDouble(partes[3]);
-	        
-	        boolean esJefe = Boolean.parseBoolean(partes[4]); 
-	        boolean esLider = Boolean.parseBoolean(partes[5]);
-	        
-	        Trabajador trabajador = new Trabajador(
-	            id, nombre, rol, sueldo, esJefe, esLider
-	        );
+			int sueldo = (int) Double.parseDouble(partes[3]);
 
-	        lista_Trabajadores[contador] = trabajador;
-	        contador++;
-	    }
+			boolean esJefe = Boolean.parseBoolean(partes[4]);
+			boolean esLider = Boolean.parseBoolean(partes[5]);
 
-	    entrada.close();
+			Trabajador trabajador = new Trabajador(id, nombre, rol, sueldo, esJefe, esLider);
+
+			lista_Trabajadores[contador] = trabajador;
+			contador++;
+		}
+
+		entrada.close();
 	}
-	
-	
-	
-	
+
 	private String entradaUsuario() {
 		System.out.println("Ingresa el nombre que quieres buscar: ");
 		return null;
