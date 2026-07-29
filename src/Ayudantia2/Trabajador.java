@@ -56,6 +56,42 @@ public class Trabajador {
 	public boolean isEsLider() {
 		return esLider;
 	}
+
+
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+
+	public void setPuesto(String puesto) {
+		this.puesto = puesto;
+	}
+
+
+
+	public void setSueldo(double sueldo) {
+		this.sueldo = sueldo;
+	}
+
+
+
+	public void setEsJefe(boolean esJefe) {
+		this.esJefe = esJefe;
+	}
+
+
+
+	public void setEsLider(boolean esLider) {
+		this.esLider = esLider;
+	}
 	
 	// ID,Nombre,Rol,Sueldo,esJefe,esLider
 

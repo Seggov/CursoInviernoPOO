@@ -31,6 +31,21 @@ public class Proyectos {
 	public int getEmpleadosProyectos() {
 		return empleadosProyectos;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public void setPresupuestoProyecto(double presupuestoProyecto) {
+		this.presupuestoProyecto = presupuestoProyecto;
+	}
+	public void setLiderProyecto(int liderProyecto) {
+		this.liderProyecto = liderProyecto;
+	}
+	public void setEmpleadosProyectos(int empleadosProyectos) {
+		this.empleadosProyectos = empleadosProyectos;
+	}
 	
 	
 	
