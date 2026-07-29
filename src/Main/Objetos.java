@@ -11,7 +11,7 @@ public class Objetos {
 	private void iniciar() {
 		
 		int[] lista = new int[10];
-		lista = {1,2}; 
+		//lista = {1,2}; 
 		// TODO Auto-generated method stub
 		
 	}

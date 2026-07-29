@@ -38,18 +38,23 @@ public class Sistema {
 
 				System.out.println("Debes cambiar el sueldo de un empleado.");
 				System.out.println("Indica su ID:");
-
 				int usuarioIdentificador = Integer.parseInt(ENTRADA.nextLine());
-
 				System.out.println("Indica el nuevo sueldo:");
-
 				double usuarioNuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
+				while (esNegativo(usuarioNuevoSueldo)) {
 
+					System.out.println("ERRO, NO NUMERO NEGATIVOS \n" + "Indica el nuevo sueldo: ");
+					usuarioNuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
+
+				}
 				cambiarSueldo(usuarioIdentificador, usuarioNuevoSueldo);
 
 				System.out.println("Sueldo actualizado.");
 				mostrarRoles();
 			}
+
+			System.out.println(
+					"Ahora indique el nombre de un empleado que dese identificar su estado actual \n (=) Nombre Completo");
 
 		}
 		// ESCEPCIONES - MANEJO DE ERRORES
@@ -57,6 +62,13 @@ public class Sistema {
 			System.out.println("ERORR DE ARCHIVOS CSV");
 		}
 
+	}
+
+	private boolean esNegativo(double usuarioNuevoSueldo) {
+		if (usuarioNuevoSueldo > 0.1) {
+			return false;
+		}
+		return true;
 	}
 
 	private boolean esCambiar() {
@@ -68,6 +80,7 @@ public class Sistema {
 	// ID,Nombre,Jefe_ID,Empleados_ID
 
 	private void cambiarSueldo(int identificador, double sueldoNuevo) {
+
 		for (int i = 0; i < lista_Trabajadores.length; i++) {
 			if (lista_Trabajadores[i] == null) {
 				continue;
