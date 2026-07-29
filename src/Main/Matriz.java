@@ -45,13 +45,14 @@ public class Matriz {
     }
 
     private void mostrarMatriz() {
-    	
         for (int fila = 0; fila < matriz.length; fila++) {
             for (int columna = 0; columna < matriz[fila].length; columna++) {
-                System.out.println(""+matriz[fila][columna]);
+                // Usa print (sin 'ln') para que se imprima en la misma línea
+                System.out.print(matriz[fila][columna] + " "); 
             }
-
+            // Este println se ejecuta al terminar la fila y salta a la siguiente
             System.out.println();
         }
     }
+
 }

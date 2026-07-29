@@ -3,17 +3,7 @@ package Main;
 import java.util.Arrays;
 
 public class Listas {
-
-    /*
-     * Arreglo que almacena los elementos de la lista.
-     * Tiene una capacidad máxima de 12 valores.
-     */
     private int[] lista = new int[12];
-
-    /*
-     * Indica cuántos elementos reales hay en la lista.
-     * Las posiciones desde 0 hasta cantidad - 1 contienen datos válidos.
-     */
     private int cantidad = 0;
 
     public static void main(String[] args) {
@@ -21,9 +11,6 @@ public class Listas {
         programa.iniciar();
     }
 
-    /**
-     * Ejecuta ejemplos de inserción ordenada, eliminación y búsqueda binaria.
-     */
     private void iniciar() {
 
         /*
