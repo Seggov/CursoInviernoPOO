@@ -1,4 +1,3 @@
-ID,Nombre,Rol,Sueldo,esJefe,esLider
 1,Ana Torres,Backend Developer,55000.0,true,true
 2,Pedro Soto,Frontend Developer,48000.0,false,true
 3,Marcos Díaz,Jefe de Ventas,52000.0,true,true

@@ -15,6 +15,113 @@ public class Departamentos {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public int getJefeDepartamento() {
+		return jefeDepartamento;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public int getEmpleadoDepartamento() {
+		return empleadoDepartamento;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "Departamentos [id=" + id + ", nombre=" + nombre + ", jefeDepartamento=" + jefeDepartamento
+				+ ", empleadoDepartamento=" + empleadoDepartamento + "]";
+	}
+	
+	
 
 
 	

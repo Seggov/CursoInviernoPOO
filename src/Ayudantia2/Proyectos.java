@@ -2,14 +2,13 @@ package Ayudantia2;
 
 public class Proyectos {
 	
-	private String id;
+	private int id;
 	private String nombre;
 	private double presupuestoProyecto;
 	private int liderProyecto;
 	private int empleadosProyectos;
 	// ID,Nombre,Presupuesto,Lider_ID,Equipo_ID
-	public Proyectos(String id, String nombre, double presupuestoProyecto, int liderProyecto, String primerEmpleado,
-			int empleadosProyectos, String ultimoEmpleado) {
+	public Proyectos(int id, String nombre, double presupuestoProyecto, int liderProyecto, int empleadosProyectos) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -17,7 +16,7 @@ public class Proyectos {
 		this.liderProyecto = liderProyecto;
 		this.empleadosProyectos = empleadosProyectos;
 	}
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	public String getNombre() {
@@ -32,6 +31,8 @@ public class Proyectos {
 	public int getEmpleadosProyectos() {
 		return empleadosProyectos;
 	}
+	
+	
 	
 	
 	

@@ -12,41 +12,102 @@ public class Sistema {
 	private Departamentos[] lista_departamentos = new Departamentos[100];
 	private Proyectos[] lista_Proyectos = new Proyectos[100];
 	
-	
 	private String CONTRA = "17";
 	
 	
 	public void Iniciar() {
 
 		try {
-			
+			// Lectura Archivos
 			lecturaEmpleados("empleados.csv");
 			lecturaProyectos("proyectos.csv");
 			lecturaDepartamentos("departamentos.csv");
+		
 			verificarContraValida();
 			
-			
-			
-			
-			String name = entradaUsuario();
-			
+			// Mostrar Departamentos de la Empresa
+			System.out.println("DEPARTAMENTOS DE EMPRESA \n");
+			mostrarDepartamentos();
+			System.out.println("");
+			// Mostrar todos los proyectos de la empresa.
+			System.out.println("PROYECTOS DE EMPRESA \n");
+			mostrarProyectosEmpresa();
+			System.out.println("");
+
+			System.out.println("Tienes que cambiar SI O SI EL SUELDO DE UN EMPLEADO ¿A quien eligues? \n ");
+			mostrarRoles();
+			cambiarSueldo();
 			} 
 		// ESCEPCIONES  - MANEJO DE ERRORES
 		catch (FileNotFoundException e) {
 			System.out.println("ERORR DE ARCHIVOS CSV");}
-		catch (Exception e) {
-			
-		} 
+		
 
 	}
 	// ID,Nombre,Jefe_ID,Empleados_ID
 	// ID,Nombre,Jefe_ID,Empleados_ID
+
+	private void cambiarSueldo() {
+		
+	}
+
+	private void mostrarRoles() {
+		for (int i = 0; i < lista_Trabajadores.length; i++) {
+			if (lista_Trabajadores[i]==null) {
+				continue;
+			}
+			
+			System.out.println(lista_Trabajadores[i].getID()+"- "+lista_Trabajadores[i].getPuesto()+" sueldo actual |"+lista_Trabajadores[i].getSueldo()+" Hora|");
+			
+			
+		}
+	}
+		
+		
+	
+
+	private void mostrarProyectosEmpresa() {
+		
+		for (int i = 0; i < lista_Proyectos.length; i++) {
+			if (lista_Proyectos[i]==null) {
+				continue;
+			}
+			
+			System.out.println(lista_Proyectos[i].getId()+"- "+lista_Proyectos[i].getNombre());
+			
+			
+		}
+		
+	}
+
+	private void mostrarDepartamentos() {
+		
+		for (int i = 0; i < lista_departamentos.length; i++) {
+			if (lista_departamentos[i]==null) {
+				continue;
+			}
+			System.out.println(lista_departamentos[i].getId()+"- "+lista_departamentos[i].getNombre());
+		}
+	}
 
 	private boolean verificarContraValida() {
 		return false;
 		
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private void lecturaDepartamentos(String ruta)
 	        throws FileNotFoundException {
 
@@ -55,7 +116,7 @@ public class Sistema {
 	    int contador = 0;
 
 	    while (entrada.hasNextLine()) {
-
+	    	
 	        String linea = entrada.nextLine();
 	        String[] partes =linea.split(",");
 
@@ -77,45 +138,69 @@ public class Sistema {
 	
 	
 
-	private void lecturaProyectos(String string) throws FileNotFoundException {
-		File file = new File(string);
-		Scanner entrada = new Scanner(file);		
+	private void lecturaProyectos(String ruta) throws FileNotFoundException {
+
+	    File file = new File(ruta);
+	    Scanner entrada = new Scanner(file);
+	    int contador = 0;
+
+	    while (entrada.hasNextLine()) {
+
+	        String linea = entrada.nextLine();
+	        String[] partes = linea.split(",");
+
+	        int id = Integer.parseInt(partes[0]);
+	        String nombre = partes[1];
+	        double presupuestoProyecto = Double.parseDouble(partes[2]);
+
+	        int liderProyecto = Integer.parseInt(partes[3]);
+
+	        int empleadosProyectos = Integer.parseInt(partes[4].replace("\"", ""));
+	        
+	        Proyectos proyecto = new Proyectos(
+	                id,
+	                nombre,
+	                presupuestoProyecto,
+	                liderProyecto,
+	                empleadosProyectos
+	        );
+
+	        lista_Proyectos[contador] = proyecto;
+	        contador++;
+	    }
+	    entrada.close();
 	}
 
-	private void lecturaEmpleados(String string) throws FileNotFoundException {
-		
-		File file = new File(string);
-		Scanner entrada = new Scanner(file);
-		int contador = 0;
-		
-		while (entrada.hasNextLine()) {
-			String linea = entrada.nextLine();
-			String[] partes = linea.split(";");
+	private void lecturaEmpleados(String ruta) throws FileNotFoundException {
 
-			int id = Integer.parseInt(partes[0]); // id
-			String nombre = partes[1]; // nombre
-			String rol = partes[2]; // rut
-			int sueldo = Integer.parseInt(partes[3]); // sueldo
-			String aux_jefe = partes[4];
-			String aux_lider = partes[5];
-			
-			boolean esJefe = false; boolean esLider = false;
-			
-			if (aux_jefe.equals("true")) {
-				esJefe = true;
-			} else {
-				esJefe = false;
-			}
-			if (aux_lider.equals("true")) {
-				esLider = true;
-			} else {
-				esLider = false;
-			}
-			
-			Trabajador trabajadores = new Trabajador(id,nombre,rol,sueldo,esJefe,esLider);
-			lista_Trabajadores[contador] = trabajadores;
-			contador++;
-		}
+	    File file = new File(ruta);
+	    Scanner entrada = new Scanner(file);
+	    int contador = 0;
+
+	    entrada.nextLine();	
+
+	    while (entrada.hasNextLine()) {
+	        String linea = entrada.nextLine();
+	        String[] partes = linea.split(",");
+
+	        int id = Integer.parseInt(partes[0]);
+	        String nombre = partes[1];
+	        String rol = partes[2];
+
+	        int sueldo = (int) Double.parseDouble(partes[3]);
+	        
+	        boolean esJefe = Boolean.parseBoolean(partes[4]); 
+	        boolean esLider = Boolean.parseBoolean(partes[5]);
+	        
+	        Trabajador trabajador = new Trabajador(
+	            id, nombre, rol, sueldo, esJefe, esLider
+	        );
+
+	        lista_Trabajadores[contador] = trabajador;
+	        contador++;
+	    }
+
+	    entrada.close();
 	}
 	
 	
