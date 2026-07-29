@@ -13,8 +13,9 @@ public class ActividadListas {
     }
 
     private void iniciar() {
+    	System.err.println(163%9);
         int n = 5;
-
+        	
         int[] listaNumeros = generarSecuenciaNumeros(n);
         String[] listaPalabras = generarSecuenciaPalabras(n);
         String[] listaVacia = new String[n];
