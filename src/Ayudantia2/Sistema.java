@@ -17,53 +17,63 @@ public class Sistema {
 	public void Iniciar() {
 
 		try {
-			// Lectura Archivos
-			lecturaEmpleados("empleados.csv");
-			lecturaProyectos("proyectos.csv");
-			lecturaDepartamentos("departamentos.csv");
-
-			verificarContraValida();
-
-			// Mostrar Departamentos de la Empresa
-			System.out.println("DEPARTAMENTOS DE EMPRESA \n");
-			mostrarDepartamentos();
-			System.out.println("");
-			// Mostrar todos los proyectos de la empresa.
-			System.out.println("PROYECTOS DE EMPRESA \n");
-			mostrarProyectosEmpresa();
-			System.out.println("");
-
-			while (esCambiar()) {
-
-				mostrarRoles();
-
-				System.out.println("Debes cambiar el sueldo de un empleado.");
-				System.out.println("Indica su ID:");
-				int usuarioIdentificador = Integer.parseInt(ENTRADA.nextLine());
-				System.out.println("Indica el nuevo sueldo:");
-				double usuarioNuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
-				while (esNegativo(usuarioNuevoSueldo)) {
-
-					System.out.println("ERRO, NO NUMERO NEGATIVOS \n" + "Indica el nuevo sueldo: ");
-					usuarioNuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
-
+			System.out.println("Antes de nada necesitamos comprobar la seguridad Ingresa tu Clave\n");
+			if (esCorrecto()) {
+				
+				// Lectura Archivos
+				lecturaEmpleados("empleados.csv");
+				lecturaProyectos("proyectos.csv");
+				lecturaDepartamentos("departamentos.csv");
+				
+				verificarContraValida();
+				
+				// Mostrar Departamentos de la Empresa
+				System.out.println("DEPARTAMENTOS DE EMPRESA \n");
+				mostrarDepartamentos();
+				System.out.println("");
+				// Mostrar todos los proyectos de la empresa.
+				System.out.println("PROYECTOS DE EMPRESA \n");
+				mostrarProyectosEmpresa();
+				System.out.println("");
+				
+				while (esCambiar()) {
+					
+					mostrarRoles();
+					
+					System.out.println("Debes cambiar el sueldo de un empleado.");
+					System.out.println("Indica su ID:");
+					int usuarioIdentificador = Integer.parseInt(ENTRADA.nextLine());
+					System.out.println("Indica el nuevo sueldo:");
+					double usuarioNuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
+					while (esNegativo(usuarioNuevoSueldo)) {
+						
+						System.out.println("ERRO, NO NUMERO NEGATIVOS \n" + "Indica el nuevo sueldo: ");
+						usuarioNuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
+						
+					}
+					cambiarSueldo(usuarioIdentificador, usuarioNuevoSueldo);
+					
+					System.out.println("Sueldo actualizado.");
+					mostrarRoles();
 				}
-				cambiarSueldo(usuarioIdentificador, usuarioNuevoSueldo);
-
-				System.out.println("Sueldo actualizado.");
-				mostrarRoles();
+				
+				System.out.println(
+						"Ahora indique el nombre de un empleado que dese identificar su estado actual \n (=) Nombre Completo");
+				String entradaEmpleado = ENTRADA.nextLine();
+				
+				buscarEmpleado(entradaEmpleado);
+			// ESCEPCIONES - MANEJO DE ERRORES
+			catch (FileNotFoundException e) {
+				System.out.println("ERORR DE ARCHIVOS CSV");
 			}
-
-			System.out.println(
-					"Ahora indique el nombre de un empleado que dese identificar su estado actual \n (=) Nombre Completo");
-			String entradaEmpleado = ENTRADA.nextLine();
-
-			buscarEmpleado(entradaEmpleado);
+			} else {
+			System.out.println("Todo malo");
 		}
-		// ESCEPCIONES - MANEJO DE ERRORES
-		catch (FileNotFoundException e) {
-			System.out.println("ERORR DE ARCHIVOS CSV");
-		}
+}
+
+	private boolean esCorrecto() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	private void buscarEmpleado(String entradaEmpleado) {
