@@ -1,5 +1,7 @@
 package Ayudantias.Ayudantia4;
 
+import java.util.Iterator;
+
 /* Plantilla para ArrayList
  * Tienes que rellenar todos los metodos
  * No puedes cambiar sus parametros.
@@ -20,12 +22,19 @@ public class ArrayList {
 
     // Agrega un valor al final de la lista. Si está llena, redimensiona.
     public void add(double valor) {
-
+    	ensureCapacity();
+    	elementos[size] = valor;
+    	size++;
+    	
+    	
     }
 
     // Retorna el valor en la posición dada.
     public double get(int indice) {
-        return 0;
+    	if ((indice < 0) || (indice >= size)) {
+    		throw new IndexOutOfBoundsException();
+    	}
+        return elementos[indice];
     }
 
     // Reemplaza el valor en la posición dada.
@@ -66,7 +75,15 @@ public class ArrayList {
 
     // Redimensiona el arreglo duplicando su capacidad cuando se llene.
     private void ensureCapacity() {
-
+    	if (size == CAPACIDAD) {
+    		CAPACIDAD = CAPACIDAD * 2;
+    		double[] nuevaLista = new double[CAPACIDAD];
+    		
+    		for (int i = 0; i < size; i++) {
+    			nuevaLista[i] = this.elementos[i];
+    		}
+    		this.elementos = nuevaLista;
+    	}
     }
 }
 
