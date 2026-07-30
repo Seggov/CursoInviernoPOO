@@ -17,63 +17,56 @@ public class Sistema {
 	public void Iniciar() {
 
 		try {
-			System.out.println("Antes de nada necesitamos comprobar la seguridad Ingresa tu Clave\n");
-			if (esCorrecto()) {
-				
-				// Lectura Archivos
+			System.out.println("Antes de nada necesitamos comprobar la seguridad. Ingresa tu clave:");
+			String aux_contra = ENTRADA.nextLine();
+			if (esCorrecto(aux_contra)) {
+
 				lecturaEmpleados("empleados.csv");
 				lecturaProyectos("proyectos.csv");
 				lecturaDepartamentos("departamentos.csv");
-				
-				verificarContraValida();
-				
-				// Mostrar Departamentos de la Empresa
-				System.out.println("DEPARTAMENTOS DE EMPRESA \n");
+
 				mostrarDepartamentos();
-				System.out.println("");
-				// Mostrar todos los proyectos de la empresa.
-				System.out.println("PROYECTOS DE EMPRESA \n");
 				mostrarProyectosEmpresa();
-				System.out.println("");
-				
+
 				while (esCambiar()) {
-					
+
 					mostrarRoles();
-					
-					System.out.println("Debes cambiar el sueldo de un empleado.");
-					System.out.println("Indica su ID:");
-					int usuarioIdentificador = Integer.parseInt(ENTRADA.nextLine());
+
+					System.out.println("Indica el ID del empleado:");
+					int id = Integer.parseInt(ENTRADA.nextLine());
+
 					System.out.println("Indica el nuevo sueldo:");
-					double usuarioNuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
-					while (esNegativo(usuarioNuevoSueldo)) {
-						
-						System.out.println("ERRO, NO NUMERO NEGATIVOS \n" + "Indica el nuevo sueldo: ");
-						usuarioNuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
-						
+					double nuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
+
+					while (esNegativo(nuevoSueldo)) {
+						System.out.println("Error: el sueldo no puede ser negativo.");
+
+						nuevoSueldo = Double.parseDouble(ENTRADA.nextLine());
 					}
-					cambiarSueldo(usuarioIdentificador, usuarioNuevoSueldo);
-					
+
+					cambiarSueldo(id, nuevoSueldo);
+
 					System.out.println("Sueldo actualizado.");
 					mostrarRoles();
 				}
-				
-				System.out.println(
-						"Ahora indique el nombre de un empleado que dese identificar su estado actual \n (=) Nombre Completo");
-				String entradaEmpleado = ENTRADA.nextLine();
-				
-				buscarEmpleado(entradaEmpleado);
-			// ESCEPCIONES - MANEJO DE ERRORES
-			catch (FileNotFoundException e) {
-				System.out.println("ERORR DE ARCHIVOS CSV");
-			}
-			} else {
-			System.out.println("Todo malo");
-		}
-}
 
-	private boolean esCorrecto() {
-		// TODO Auto-generated method stub
-		return false;
+				System.out.println("Ingrese el nombre completo del empleado:");
+
+				String nombreEmpleado = ENTRADA.nextLine();
+				buscarEmpleado(nombreEmpleado);
+
+			} else {
+				System.out.println("Contraseña incorrecta.");
+			}
+
+		} catch (FileNotFoundException e) {
+			System.out.println("Error: no se encontraron los archivos CSV.");
+		}
+		ENTRADA.close();
+	}
+
+	private boolean esCorrecto(String password) {
+		return password.equals(CONTRA);
 	}
 
 	private void buscarEmpleado(String entradaEmpleado) {
