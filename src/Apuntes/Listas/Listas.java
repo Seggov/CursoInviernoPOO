@@ -1,4 +1,4 @@
-package Main;
+package Apuntes.Listas;
 
 import java.util.Arrays;
 

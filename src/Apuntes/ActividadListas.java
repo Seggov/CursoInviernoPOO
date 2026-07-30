@@ -1,4 +1,4 @@
-package Main;
+package Apuntes;
 
 import java.util.Arrays;
 import java.util.Random;

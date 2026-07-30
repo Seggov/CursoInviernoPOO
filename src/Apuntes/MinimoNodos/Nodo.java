@@ -1,4 +1,4 @@
-package MinimoNodos;
+package Apuntes.MinimoNodos;
 
 public class Nodo {
 

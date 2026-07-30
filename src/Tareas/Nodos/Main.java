@@ -1,4 +1,4 @@
-package Nodos;
+package Tareas.Nodos;
 
 import java.util.Scanner;
 

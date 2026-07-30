@@ -1,4 +1,4 @@
-package Main;
+package Apuntes;
 
 import java.util.Random;
 import java.util.Scanner;

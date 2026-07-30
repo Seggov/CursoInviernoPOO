@@ -1,4 +1,4 @@
-package Ayudantia3;
+package Ayudantias.Ayudantia3;
 
 public class Sistema {
 

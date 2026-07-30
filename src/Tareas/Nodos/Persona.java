@@ -1,4 +1,4 @@
-package Nodos;
+package Tareas.Nodos;
 
 public class Persona implements Comparable<Persona> {
 

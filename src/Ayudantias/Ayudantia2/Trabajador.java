@@ -1,4 +1,4 @@
-package Ayudantia2;
+package Ayudantias.Ayudantia2;
 
 public class Trabajador {
 		
