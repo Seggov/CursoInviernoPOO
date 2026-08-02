@@ -12,9 +12,14 @@ public class LinkedinActividad {
 
 	private void iniciar() {
 		
-		LinkedList<String> listaDinamica = new LinkedList<String>();
+		LinkedList<Persona> listaDinamica = new LinkedList<Persona>();
 		
+	    Persona p1 = new Persona("Pedro", "111", 0);
+	    Persona p2 = new Persona("Ana", "222",42);
+	    Persona p3 = new Persona("Juan", "333",501);
 		
+	    
+	    listaDinamica
 	}
 
 }
