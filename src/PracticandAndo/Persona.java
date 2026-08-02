@@ -11,11 +11,20 @@ public class Persona {
 		this.rut = rut;
 		this.edad = edad;
 	}
+	public String getNombre() {
+		return nombre;
+	}
+	public String getRut() {
+		return rut;
+	}
+	public int getEdad() {
+		return edad;
+	}
+	
 	@Override
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", rut=" + rut + ", edad=" + edad + "]";
 	}
-	
 	
 	
 	

@@ -8,27 +8,28 @@ package PracticandAndo;
  * 
  */
 public class Main {
-	public static void main(String[] args) {
-		Main programa = new Main();
-		programa.iniciar();
-		
-	}
-	
-	private void iniciar() {
 
-	    Persona p1 = new Persona("Pedro", "111", 0);
-	    Persona p2 = new Persona("Ana", "222",42);
-	    Persona p3 = new Persona("Juan", "333",501);
+    public static void main(String[] args) {
 
-	    
-	    ListaNodos lista = new ListaNodos();
-	    
-	    Nodo nodo1 = new Nodo(p1);
-	    Nodo nodo2 = new Nodo(p2);
-	    Nodo nodo3 = new Nodo(p3);
-	    
+        Persona p1 = new Persona("Pedro", "111", 0);
+        Persona p2 = new Persona("Ana", "222", 0);
+        Persona p3 = new Persona("Juan", "333", 0);
 
-	    
-	}
+        ListaNodos lista = new ListaNodos();
 
+
+        lista.agregarFinal(p1);
+        lista.agregarFinal(p2);
+        lista.agregarFinal(p3);
+
+
+        System.out.println("Hacia adelante:");
+
+        lista.mostrarAdelante();
+
+
+        System.out.println("\nHacia atrás:");
+
+        lista.mostrarAtras();
+    }
 }

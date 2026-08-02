@@ -5,10 +5,12 @@ public class Nodo {
 	private Nodo sig;
 	private Nodo prev;
 	
-	public Nodo(Persona persona) {
-		this.persona = persona;
+	public Nodo(Persona p) {
+		this.persona = p;
 	}
 	
+
+
 	public Persona getPersona() {
 		return this.persona;
 	}
