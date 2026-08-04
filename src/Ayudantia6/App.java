@@ -3,6 +3,7 @@ package Ayudantia6;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.FileSystemException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -14,7 +15,7 @@ public class App {
 	}
 	
 	
-	
+	private ArrayList<Alimento> listaAimento = new ArrayList<>();
 	
 	private void iniciar() throws FileNotFoundException {
 
@@ -33,8 +34,8 @@ public class App {
 			String linea = lecturaArchivos.nextLine();
 			
 			while (lecturaArchivos.hasNextLine()) {
-				String[] partes = linea.split(",");
-				
+				String[] partes = linea.split(";");
+				// 12.50;hamburguesa,papas,fanta
 			}
 			
 		} catch (FileNotFoundException e) {
