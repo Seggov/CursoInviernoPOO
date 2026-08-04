@@ -1,13 +1,46 @@
 package Ayudantia6;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.FileSystemException;
+import java.util.Scanner;
+
+
 public class App {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		App programa = new App();
 		programa.iniciar();
 	}
+	
+	
+	
+	
+	private void iniciar() throws FileNotFoundException {
 
-	private void iniciar() {
+		lecturaAchivos("pedidos.txt");
+		
+	}
+
+	private void lecturaAchivos(String name) throws FileNotFoundException {
+		// El do ejecuta el código primero, y después el while pregunta: “¿sigo
+		// repitiendo?”
+		
+		try {
+
+			File archivo = new File(name);
+			Scanner lecturaArchivos = new Scanner(archivo);
+			String linea = lecturaArchivos.nextLine();
+			
+			while (lecturaArchivos.hasNextLine()) {
+				String[] partes = linea.split(",");
+				
+			}
+			
+		} catch (FileNotFoundException e) {
+			
+		}
+		
 		
 	}
 
