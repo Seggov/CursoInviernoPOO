@@ -1,27 +1,41 @@
 package Apuntes.Herencia;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Mascota {
-	protected final String VETERINARIA = "Los UCNIN";
-	
-	private String nombre;
-	private String especie;
-	private LinkedList<Atencion> Atencion = new LinkedList<>();
-	
-	
-	public Mascota(String nombre, String especie, LinkedList<Apuntes.Herencia.Atencion> atencion, Perro perro) {
-		super();
-		this.nombre = nombre;
-		this.especie = especie;
-		Atencion = atencion;
-		this.guau = perro;
-	}
-	Perro guau = new Perro(VETERINARIA, VETERINARIA, Atencion, guau);
-	public void MascotasVeterinaria() {
-		
-		guau.hablando();
-		
-	}
 
+    protected static final String VETERINARIA = "Los UCNIN";
+
+    private String nombre;
+    private String especie;
+    private ArrayList<Atencion> listaAtencion = new ArrayList<>();
+    
+    public Mascota(String nombre, String especie) {
+        this.nombre = nombre;
+        this.especie = especie;
+    }
+
+    public void hablando() {
+        System.out.println("La mascota hace un sonido");
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getEspecie() {
+        return especie;
+    }
+    
+    
+    public void agregarAtencion(Atencion at) {
+    	this.listaAtencion.add(at);
+    	
+    	
+    }
+
+	public int calcularMonto() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
