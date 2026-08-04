@@ -127,7 +127,7 @@ public class ListaDobleNexo {
 		}
 		
 		primero.setPrev(n);
-		n.setPrev(null);
+		n.setPrev(null);	
 		n.setSig(primero);
 		
 		primero = n;

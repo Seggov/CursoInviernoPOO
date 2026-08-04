@@ -35,6 +35,13 @@ public class App {
 			
 			while (lecturaArchivos.hasNextLine()) {
 				String[] partes = linea.split(";");
+				String hora = partes[0];
+				String auxdos = partes[1];
+				String[] partesdos = auxdos.split(",");
+				
+				
+				
+				
 				// 12.50;hamburguesa,papas,fanta
 			}
 			
