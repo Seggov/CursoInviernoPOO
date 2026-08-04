@@ -261,4 +261,11 @@ public class Sistema {
 
 	}
 
+	public void iniciar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 }

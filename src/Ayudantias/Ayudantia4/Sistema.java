@@ -28,7 +28,6 @@ public class Sistema {
 				opcion = Integer.parseInt(ENTRADA.nextLine());
 
 				switch (opcion) {
-
 				case 1:
 					lecturaDiarias();
 					break;
