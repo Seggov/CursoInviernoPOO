@@ -15,7 +15,7 @@ public class App {
 	}
 	
 	
-	private ArrayList<Alimento> listaAimento = new ArrayList<>();
+	//private ArrayList<Alimento> listaAimento = new ArrayList<>();
 	
 	private void iniciar() throws FileNotFoundException {
 
