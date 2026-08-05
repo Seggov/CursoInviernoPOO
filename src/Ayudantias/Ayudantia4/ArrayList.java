@@ -39,38 +39,62 @@ public class ArrayList {
 
     // Reemplaza el valor en la posición dada.
     public void set(int indice, double valor) {
-    	
+    	if ((indice < 0) || (indice >= size)) {
+    		throw new IndexOutOfBoundsException();
+    	}
+    	elementos[indice] = valor;
     }
 
     // Retorna la cantidad de elementos en la lista.
     public int size() {
-        return 0;
+        return size;
     }
 
     // Retorna true si la lista está vacía, false en caso contrario.
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     // Elimina el elemento en la posición dada, desplaza los siguientes y lo
     // retorna.
     public double remove(int indice) {
-        return 0;
+    	if ((indice < 0) || (indice >= size)) {
+    		throw new IndexOutOfBoundsException();
+    	}
+
+    	double eliminado = elementos[indice];
+
+    	for (int i = indice; i < size - 1; i++) {
+    		elementos[i] = elementos[i + 1];
+    	}
+
+    	size--;
+    	elementos[size] = 0;
+
+        return eliminado;
     }
 
     // Elimina todos los elementos de la lista.
     public void clear() {
-    	
+    	for (int i = 0; i < size; i++) {
+    		elementos[i] = 0;
+    	}
+    	size = 0;
     }
 
     // Retorna true si el valor existe en la lista, false en caso contrario.
     public boolean contains(double valor) {
-        return false;
+        return indexOf(valor) != -1;
     }
 
     // Retorna el índice del valor, o -1 si no existe.
     public int indexOf(double valor) {
-        return 0;
+    	for (int i = 0; i < size; i++) {
+    		if (elementos[i] == valor) {
+    			return i;
+    		}
+    	}
+        return -1;
     }
 
     // Redimensiona el arreglo duplicando su capacidad cuando se llene.

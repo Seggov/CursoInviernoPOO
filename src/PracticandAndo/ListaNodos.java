@@ -19,11 +19,13 @@ public class ListaNodos {
 		}
 		
 		Nodo ultimo = getUltimo();
+		ultimo.setSig(nuevo);
+		nuevo.setPrev(ultimo);
 	}
 
 	public void mostrar() {
 		// TODO Auto-generated method stub
-		
+		mostrarAdelante();
 	}
 		
 	private Nodo getUltimo() {
@@ -37,12 +39,22 @@ public class ListaNodos {
 
 	public void mostrarAdelante() {
 		// TODO Auto-generated method stub
-		
+		Nodo actual = primero;
+
+		while (actual != null) {
+			System.out.println(actual.getPersona());
+			actual = actual.getSig();
+		}
 	}
 
 	public void mostrarAtras() {
 		// TODO Auto-generated method stub
-		
+		Nodo actual = getUltimo();
+
+		while (actual != null) {
+			System.out.println(actual.getPersona());
+			actual = actual.getPrev();
+		}
 	}
 
 }
