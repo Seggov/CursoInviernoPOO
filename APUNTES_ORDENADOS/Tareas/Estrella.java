@@ -1,9 +1,9 @@
 package Tareas;
 
-public class Estrella extends Figura{
+public abstract class Estrella extends Figura{
 
 	@Override
-	void quedoEnFigura(String firugra) {
+	public void quedoEnFigura(String firugra) {
 		// TODO Auto-generated method stub
 		
 	}
