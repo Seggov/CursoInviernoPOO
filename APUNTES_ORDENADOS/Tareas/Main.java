@@ -11,30 +11,16 @@ public class Main {
 	}
 	
 	public void inciarCiclo() {
-		Scanner sc = new Scanner(System.in);
+		
+		Usuario user_a = new Usuario();
+		
+		
 		System.out.println();
 		
 		
-		String seleccionador = sc.nextLine();
 		
-		switch (seleccionador) {
-		case "1":
 			
-			
-			break;
-		case "2":
-			break;
-		case "3":
-			break;
-		case "4":
-			break;
-
-		default:
-			System.out.println("Saliendo. No se encontro la Opcion");
-			break;
-		}
 		
-		sc.close();
 		
 	}
 
