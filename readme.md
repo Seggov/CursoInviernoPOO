@@ -1,37 +1,28 @@
-CORRECCIONES REALIZADAS EN EL PROYECTO
+# Curso de Invierno POO - Apuntes ordenados por dificultad
 
-1. Eclipse / Build Path
-- El archivo .classpath no tenia la carpeta src declarada como source folder.
-- Se agrego: <classpathentry kind="src" path="src"/>
+Esta carpeta reorganiza los apuntes como **proyectos Java independientes**. Así puedes importar cada carpeta en Eclipse por separado y estudiar un concepto a la vez.
 
-2. Figura
-- Se corrigio List/Punto vs Puntos.
-- Se agregaron los imports necesarios.
-- Figura queda abstracta y define calcularArea() y calcularPerimetro().
-- Implementa Exportable y comparte exportarTxt() con sus subclases.
+## Orden recomendado
 
-3. Usuario
-- Ya no es abstracta, porque Main necesita instanciar usuarios.
-- Un Usuario ahora guarda varias figuras con List<Figura>, tal como pide el enunciado.
-- Implementa exportarTxt().
+1. **01_Objetos** — clases, objetos, atributos, constructor, `this` y métodos.
+2. **02_Arrays** — arreglos, recorridos, generación de datos y operaciones básicas.
+3. **03_Lista_Con_Array** — implementar una lista manualmente usando un arreglo.
+4. **04_Matrices** — arreglos bidimensionales y recorridos con dos `for`.
+5. **05_Referencias** — dos variables apuntando al mismo objeto y diferencia con copiar valores.
+6. **06_LinkedList_Java** — uso de `LinkedList` que ya entrega Java.
+7. **07_Nodos_Lista_Doble** — construir una lista doblemente enlazada desde cero.
+8. **08_Herencia** — reutilizar atributos y métodos mediante `extends` y `super`.
+9. **09_Clases_Abstractas** — crear una clase base incompleta que obliga a las hijas a completar métodos.
+10. **10_Interfaces** — definir capacidades que distintas clases se comprometen a implementar.
+11. **11_Polimorfismo** — tratar objetos distintos mediante un mismo tipo base.
+12. **12_Proyecto_Integrador_Figuras** — Herencia + Abstracta + Interface + Polimorfismo en un solo ejercicio.
 
-4. Subclases
-- Cuadrado, Circunferencia, Triangulo y Estrella heredan correctamente de Figura.
-- Ya no tienen @Override de metodos que no existen.
-- Se agregaron constructores que llaman a super(...).
+## Cómo estudiar cada proyecto
 
-5. Calculadora
-- Recibe Figura y delega area/perimetro usando polimorfismo.
-- verificarSiCabe(...) queda como TODO porque determinar si una figura realmente cabe dentro de otra requiere una regla geometrica concreta; comparar solo areas no es suficiente.
+1. Lee su `README.md`.
+2. Abre primero el `Main.java`.
+3. Sigue los objetos que se crean y los métodos que se llaman.
+4. Ejecuta el ejemplo.
+5. Realiza el ejercicio propuesto al final del README.
 
-6. Main
-- Se crean figuras concretas, usuarios y una lista de Figura.
-- Se muestra el uso del polimorfismo en un for.
-
-VERIFICACION
-- Todo el codigo dentro de src compila correctamente con javac.
-- Tareas.Main se ejecuto correctamente.
-
-PENDIENTE DE LA TAREA
-- Definir la formula/representacion geometrica exacta de Estrella.
-- Implementar correctamente verificarSiCabe(...) segun la regla que indique el profesor.
+> Idea clave: no memorices sintaxis aislada. Pregúntate siempre **qué objeto existe, qué datos guarda y quién llama a quién**.
