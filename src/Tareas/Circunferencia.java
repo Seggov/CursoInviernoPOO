@@ -1,7 +1,8 @@
 package Tareas;
 
-public abstract class Circunferencia extends Figura{
+public class Circunferencia extends Figura{
 
+	private int precision;
 	
 
 	@Override
