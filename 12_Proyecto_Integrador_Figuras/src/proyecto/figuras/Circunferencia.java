@@ -1,6 +1,7 @@
 package proyecto.figuras;
 
 public class Circunferencia extends Figura {
+
     private double radio;
 
     public Circunferencia(double radio) {

@@ -1,7 +1,6 @@
 package apuntes.herencia;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Mascota {
 
@@ -9,14 +8,14 @@ public class Mascota {
 
     private String nombre;
     private String especie;
-    private List<Atencion> atenciones = new ArrayList<>();
+    private ArrayList<Atencion> listaAtencion = new ArrayList<>();
 
     public Mascota(String nombre, String especie) {
         this.nombre = nombre;
         this.especie = especie;
     }
 
-    public void hablar() {
+    public void hablando() {
         System.out.println("La mascota hace un sonido");
     }
 
@@ -29,14 +28,16 @@ public class Mascota {
     }
 
     public void agregarAtencion(Atencion atencion) {
-        atenciones.add(atencion);
+        listaAtencion.add(atencion);
     }
 
     public int calcularMonto() {
         int total = 0;
-        for (Atencion atencion : atenciones) {
-            total += atencion.getMonto();
+
+        for (int i = 0; i < listaAtencion.size(); i++) {
+            total += listaAtencion.get(i).getMonto();
         }
+
         return total;
     }
 }

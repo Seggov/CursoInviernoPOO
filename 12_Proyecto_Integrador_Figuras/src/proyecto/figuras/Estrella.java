@@ -1,6 +1,7 @@
 package proyecto.figuras;
 
 public class Estrella extends Figura {
+
     private int puntas;
     private double lado;
 
@@ -12,7 +13,8 @@ public class Estrella extends Figura {
 
     @Override
     public double calcularArea() {
-        // Pendiente: depende de la representación geométrica definida por el ejercicio.
+        // Pendiente: falta una regla geometrica completa para el area
+        // segun como se defina la estrella en el ejercicio.
         return 0;
     }
 

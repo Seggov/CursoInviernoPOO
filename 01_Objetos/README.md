@@ -1,26 +1,70 @@
-# 01 - Objetos
+# 01 - Objetos y clases
 
-## Idea simple
+## Objetivo
+Entender la idea mas importante de POO: **una clase es un molde y un objeto es una instancia creada desde ese molde**.
 
-Una **clase** es el molde. Un **objeto** es una instancia creada usando ese molde.
+## Concepto simple
+Piensa en `Persona` como una plantilla:
 
 ```text
-Clase Persona  -> describe qué tiene y qué puede hacer
-persona1       -> objeto concreto creado desde Persona
+Clase Persona
+   |-- nombre
+   |-- edad
+   |-- mostrarDatos()
+          |
+          +--> persona1 = Persona("Pedro", 21)
+          +--> persona2 = Persona("Ana", 20)
 ```
 
-## Lo nuevo
+`persona1` y `persona2` son objetos distintos. Ambos siguen el mismo molde, pero guardan datos diferentes.
 
-- Atributos: datos que guarda el objeto.
-- Constructor: prepara el objeto al crearlo.
-- `this`: significa "este objeto".
-- Método: acción que puede realizar el objeto.
-- Getter/Setter: permiten leer o modificar atributos privados de forma controlada.
+## Sintaxis importante
 
-## Flujo del ejemplo
+```java
+Persona persona1 = new Persona("Pedro", 21);
+```
 
-`Main` crea dos personas -> cada Persona guarda nombre y edad -> `mostrarDatos()` imprime sus datos.
+- `Persona`: tipo de la variable.
+- `persona1`: nombre de la referencia.
+- `new`: crea un objeto nuevo.
+- `Persona(...)`: llama al constructor.
 
-## Ejercicio
+El constructor recibe los datos iniciales:
 
-Agrega el atributo `carrera` a `Persona` y muéstralo en `mostrarDatos()`.
+```java
+public Persona(String nombre, int edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+}
+```
+
+`this.nombre` significa **el atributo nombre de este objeto**.
+
+## Encapsulamiento basico
+Los atributos son `private` para evitar que cualquier parte del programa los cambie directamente. Para consultar datos usamos getters:
+
+```java
+public int getEdad() {
+    return edad;
+}
+```
+
+## Ejemplo practico
+Imagina un sistema de alumnos. Cada alumno puede ser un objeto con nombre, edad y carrera. La clase define que datos tiene cualquier alumno y cada objeto representa a una persona concreta.
+
+## Como se ejecuta
+Ejecuta `Main.java` como **Java Application**. El flujo es:
+
+```text
+main() -> crear Main -> iniciar() -> crear Personas -> usar sus metodos
+```
+
+## Archivos
+- `Main.java`: ejemplo ejecutable.
+- `Persona.java`: clase que representa el objeto estudiado.
+
+## Prueba tu mismo
+Agrega el atributo `carrera` a `Persona`, recibelo en el constructor y muestralo en `mostrarDatos()`.
+
+## Error comun
+Confundir la clase con el objeto. `Persona` es el molde; `persona1` es uno de los objetos creados con ese molde.

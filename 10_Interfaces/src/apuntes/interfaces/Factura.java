@@ -1,6 +1,7 @@
 package apuntes.interfaces;
 
 public class Factura implements Exportable {
+
     private int numero;
 
     public Factura(int numero) {
@@ -8,7 +9,7 @@ public class Factura implements Exportable {
     }
 
     @Override
-    public void exportar() {
-        System.out.println("Exportando factura N° " + numero);
+    public void exportarTxt() {
+        System.out.println("Exportando factura_" + numero + ".txt");
     }
 }

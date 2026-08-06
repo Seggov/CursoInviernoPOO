@@ -12,15 +12,15 @@ public abstract class Figura {
         return nombre;
     }
 
-    // No tiene cuerpo: cada figura concreta debe decidir cómo calcularlo.
+    // Metodo abstracto: se declara, pero no tiene cuerpo aqui.
     public abstract double calcularArea();
 
     public abstract double calcularPerimetro();
 
-    // Método normal compartido por todas las hijas.
+    // Metodo normal: todas las figuras lo heredan ya implementado.
     public void mostrarResumen() {
         System.out.println(nombre);
-        System.out.println("Área: " + calcularArea());
-        System.out.println("Perímetro: " + calcularPerimetro());
+        System.out.println("Area: " + calcularArea());
+        System.out.println("Perimetro: " + calcularPerimetro());
     }
 }

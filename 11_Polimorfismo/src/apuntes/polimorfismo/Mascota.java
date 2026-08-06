@@ -1,6 +1,7 @@
 package apuntes.polimorfismo;
 
-public abstract class Mascota {
+public class Mascota {
+
     private String nombre;
 
     public Mascota(String nombre) {
@@ -11,5 +12,7 @@ public abstract class Mascota {
         return nombre;
     }
 
-    public abstract void hablar();
+    public void hablando() {
+        System.out.println(nombre + " hace un sonido");
+    }
 }

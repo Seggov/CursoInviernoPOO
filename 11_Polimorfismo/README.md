@@ -1,25 +1,79 @@
 # 11 - Polimorfismo
 
-## Idea simple
+## Objetivo
+Entender como objetos de clases diferentes pueden tratarse mediante un **tipo padre comun**, manteniendo el comportamiento especifico de cada objeto.
 
-Polimorfismo significa poder tratar objetos diferentes mediante un **tipo común**.
+## La linea clave
 
 ```java
-Mascota m1 = new Perro();
-Mascota m2 = new Gato();
+Mascota mascota = new Perro("Firulais");
 ```
 
-Aunque la variable sea `Mascota`, Java ejecuta el método sobrescrito del objeto real.
+La variable es de tipo `Mascota`, pero el objeto real creado con `new` es un `Perro`.
+
+Esto es valido porque:
 
 ```text
-Mascota -> Perro -> hablar() = Guau
-Mascota -> Gato  -> hablar() = Miau
+Perro extends Mascota
 ```
 
-## Por qué sirve
+## Que metodo se ejecuta
+Si `Perro` sobrescribe `hablando()`:
 
-Evita escribir lógica separada para cada tipo. Puedes recorrer una sola lista de `Mascota` y pedirle a cada una `hablar()`.
+```java
+mascota.hablando();
+```
 
-## Ejercicio
+Java mira el **objeto real** y ejecuta la version de `Perro`.
 
-Agrega `Vaca` y métela en la misma lista sin modificar el `for`.
+```text
+referencia Mascota ---> objeto Perro ---> "Guau"
+referencia Mascota ---> objeto Gato  ---> "Miau"
+```
+
+## Por que sirve
+Podemos crear una sola lista:
+
+```java
+List<Mascota> mascotas = new ArrayList<>();
+```
+
+y guardar dentro perros y gatos:
+
+```java
+mascotas.add(new Perro("Firulais"));
+mascotas.add(new Gato("Garfield"));
+```
+
+Luego un unico ciclo funciona para todos:
+
+```java
+for (int i = 0; i < mascotas.size(); i++) {
+    Mascota mascota = mascotas.get(i);
+    mascota.hablando();
+}
+```
+
+No necesitamos preguntar:
+
+```text
+¿eres Perro?
+¿eres Gato?
+```
+
+Cada objeto sabe que comportamiento debe ejecutar.
+
+## Ejemplo practico
+En la veterinaria puedes tener una lista general de `Mascota`. Al mostrar el sonido, cada especie responde con su propia implementacion.
+
+## Relacion con herencia
+La herencia crea la relacion comun. El polimorfismo **aprovecha esa relacion** para trabajar con distintos objetos mediante el tipo padre.
+
+## Como se ejecuta
+Ejecuta `Main.java`. Veras que el mismo llamado `mascota.hablando()` genera resultados diferentes.
+
+## Prueba tu mismo
+Crea `Vaca extends Mascota`, sobrescribe `hablando()` y agregala a la lista sin cambiar el ciclo.
+
+## Error comun
+Pensar que por declarar la variable como `Mascota` se pierde el comportamiento del `Perro`. Los metodos sobrescritos se resuelven segun el objeto real.

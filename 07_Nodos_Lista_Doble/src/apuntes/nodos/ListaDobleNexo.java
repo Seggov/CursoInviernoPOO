@@ -16,11 +16,12 @@ public class ListaDobleNexo {
             contador++;
             actual = actual.getSig();
         }
+
         return contador;
     }
 
-    public void insertarInicio(Persona p) {
-        Nodo nuevo = new Nodo(p);
+    public void insertarInicio(Persona persona) {
+        Nodo nuevo = new Nodo(persona);
 
         if (isEmpty()) {
             primero = nuevo;
@@ -32,8 +33,8 @@ public class ListaDobleNexo {
         primero = nuevo;
     }
 
-    public void insertarFinal(Persona p) {
-        Nodo nuevo = new Nodo(p);
+    public void insertarFinal(Persona persona) {
+        Nodo nuevo = new Nodo(persona);
 
         if (isEmpty()) {
             primero = nuevo;
@@ -47,7 +48,12 @@ public class ListaDobleNexo {
 
     public Persona getI(int index) {
         Nodo nodo = getNodoI(index);
-        return nodo == null ? null : nodo.getPersona();
+
+        if (nodo == null) {
+            return null;
+        }
+
+        return nodo.getPersona();
     }
 
     public Persona buscarRut(String rut) {
@@ -57,8 +63,10 @@ public class ListaDobleNexo {
             if (actual.getPersona().getRut().equals(rut)) {
                 return actual.getPersona();
             }
+
             actual = actual.getSig();
         }
+
         return null;
     }
 
@@ -70,6 +78,7 @@ public class ListaDobleNexo {
             salida += actual.getPersona() + System.lineSeparator();
             actual = actual.getSig();
         }
+
         return salida;
     }
 
@@ -77,13 +86,16 @@ public class ListaDobleNexo {
         Nodo actual = primero;
 
         while (actual != null) {
-            String anterior = actual.getPrev() == null
-                    ? "null"
-                    : actual.getPrev().getPersona().getNombre();
+            String anterior = "null";
+            String siguiente = "null";
 
-            String siguiente = actual.getSig() == null
-                    ? "null"
-                    : actual.getSig().getPersona().getNombre();
+            if (actual.getPrev() != null) {
+                anterior = actual.getPrev().getPersona().getNombre();
+            }
+
+            if (actual.getSig() != null) {
+                siguiente = actual.getSig().getPersona().getNombre();
+            }
 
             System.out.println(anterior + " <- "
                     + actual.getPersona().getNombre()
@@ -94,17 +106,18 @@ public class ListaDobleNexo {
     }
 
     public void sort() {
-        // Orden sencillo: intercambia las Personas, no los enlaces de los nodos.
+        // Para mantener el ejemplo sencillo, se intercambian las Personas
+        // y no los enlaces entre nodos.
         for (int i = 0; i < size() - 1; i++) {
-            Nodo ni = getNodoI(i);
+            Nodo nodoI = getNodoI(i);
 
             for (int j = i + 1; j < size(); j++) {
-                Nodo nj = getNodoI(j);
+                Nodo nodoJ = getNodoI(j);
 
-                if (ni.getPersona().compareTo(nj.getPersona()) > 0) {
-                    Persona temporal = ni.getPersona();
-                    ni.setPersona(nj.getPersona());
-                    nj.setPersona(temporal);
+                if (nodoI.getPersona().compareTo(nodoJ.getPersona()) > 0) {
+                    Persona temporal = nodoI.getPersona();
+                    nodoI.setPersona(nodoJ.getPersona());
+                    nodoJ.setPersona(temporal);
                 }
             }
         }
@@ -127,6 +140,33 @@ public class ListaDobleNexo {
         primero = nuevoPrimero;
     }
 
+    public boolean eliminarPorRut(String rut) {
+        Nodo actual = primero;
+
+        while (actual != null) {
+            if (actual.getPersona().getRut().equals(rut)) {
+                Nodo anterior = actual.getPrev();
+                Nodo siguiente = actual.getSig();
+
+                if (anterior == null) {
+                    primero = siguiente;
+                } else {
+                    anterior.setSig(siguiente);
+                }
+
+                if (siguiente != null) {
+                    siguiente.setPrev(anterior);
+                }
+
+                return true;
+            }
+
+            actual = actual.getSig();
+        }
+
+        return false;
+    }
+
     public void vaciar() {
         primero = null;
     }
@@ -137,9 +177,11 @@ public class ListaDobleNexo {
         }
 
         Nodo actual = primero;
+
         for (int i = 0; i < index; i++) {
             actual = actual.getSig();
         }
+
         return actual;
     }
 
@@ -149,9 +191,11 @@ public class ListaDobleNexo {
         }
 
         Nodo actual = primero;
+
         while (actual.getSig() != null) {
             actual = actual.getSig();
         }
+
         return actual;
     }
 }

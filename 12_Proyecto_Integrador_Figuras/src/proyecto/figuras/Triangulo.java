@@ -1,6 +1,7 @@
 package proyecto.figuras;
 
 public class Triangulo extends Figura {
+
     private double base;
     private double altura;
     private double ladoB;

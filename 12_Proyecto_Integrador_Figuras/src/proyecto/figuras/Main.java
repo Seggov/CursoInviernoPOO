@@ -6,6 +6,11 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        Main programa = new Main();
+        programa.inciarCiclo();
+    }
+
+    public void inciarCiclo() {
         Figura cuadrado = new Cuadrado(4);
         Figura triangulo = new Triangulo(4, 3, 3, 5);
         Figura circulo = new Circunferencia(2);
@@ -17,21 +22,29 @@ public class Main {
         figuras.add(circulo);
         figuras.add(estrella);
 
-        Usuario pedro = new Usuario("Pedro");
-        pedro.agregarFigura(cuadrado);
-        pedro.agregarFigura(triangulo);
+        Usuario userA = new Usuario("Pedro");
+        Usuario userB = new Usuario("Vale");
+        Usuario userC = new Usuario("Antonio");
+
+        userA.agregarFigura(triangulo);
+        userB.agregarFigura(cuadrado);
+        userC.agregarFigura(circulo);
+        userC.agregarFigura(estrella);
 
         Calculadora calculadora = new Calculadora();
 
-        // Polimorfismo: el ciclo trabaja con Figura sin preguntar la subclase concreta.
+        // Polimorfismo: el mismo ciclo trabaja con cualquier Figura.
         for (Figura figura : figuras) {
             System.out.println(figura.getNombre());
-            System.out.println("Área: " + calculadora.calcularArea(figura));
-            System.out.println("Perímetro: " + calculadora.calcularPerimetro(figura));
+            System.out.println("Area: " + calculadora.calcularArea(figura));
+            System.out.println("Perimetro: " + calculadora.calcularPerimetro(figura));
             System.out.println();
         }
 
-        // Interface: Usuario también sabe exportarse.
-        pedro.exportarTxt();
+        // Interfaces: tanto Usuario como Figura implementan Exportable.
+        Exportable exportable = userA;
+        exportable.exportarTxt();
+
+        System.out.println("Se exporto el usuario " + userA.getName() + ".");
     }
 }

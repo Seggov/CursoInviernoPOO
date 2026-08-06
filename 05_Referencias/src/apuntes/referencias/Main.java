@@ -3,23 +3,30 @@ package apuntes.referencias;
 public class Main {
 
     public static void main(String[] args) {
-        Persona original = new Persona("Pedro");
+        Main programa = new Main();
+        programa.iniciar();
+    }
 
-        // NO crea otro objeto. Ambas variables apuntan al mismo objeto.
+    private void iniciar() {
+        Persona original = new Persona("Pedro", 21);
+
+        // NO crea otra Persona.
+        // Las dos variables apuntan al mismo objeto.
         Persona mismaReferencia = original;
 
-        mismaReferencia.setNombre("Pedro modificado");
+        mismaReferencia.setEdad(22);
+
         System.out.println("Original: " + original);
         System.out.println("Misma referencia: " + mismaReferencia);
-        System.out.println("¿Mismo objeto? " + (original == mismaReferencia));
+        System.out.println("Mismo objeto: " + (original == mismaReferencia));
 
-        // Aquí sí se crea un segundo objeto independiente.
-        Persona copiaReal = new Persona(original.getNombre());
-        copiaReal.setNombre("Copia independiente");
+        // Aqui si se crea un objeto nuevo e independiente.
+        Persona copiaReal = new Persona(original.getNombre(), original.getEdad());
+        copiaReal.setNombre("Copia de Pedro");
 
         System.out.println();
-        System.out.println("Original después de cambiar la copia: " + original);
+        System.out.println("Original: " + original);
         System.out.println("Copia real: " + copiaReal);
-        System.out.println("¿Mismo objeto? " + (original == copiaReal));
+        System.out.println("Mismo objeto: " + (original == copiaReal));
     }
 }

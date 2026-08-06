@@ -8,18 +8,19 @@ import java.util.List;
 
 public abstract class Figura implements Exportable {
 
-    private List<Punto> puntos = new ArrayList<>();
+    private List<Puntos> puntos;
     private String nombre;
 
     public Figura(String nombre) {
         this.nombre = nombre;
+        this.puntos = new ArrayList<>();
     }
 
-    public void agregarPunto(Punto punto) {
+    public void agregarPunto(Puntos punto) {
         puntos.add(punto);
     }
 
-    public List<Punto> getPuntos() {
+    public List<Puntos> getPuntos() {
         return puntos;
     }
 

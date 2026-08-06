@@ -1,5 +1,7 @@
 package apuntes.interfaces;
 
 public interface Exportable {
-    void exportar();
+
+    // Contrato: cualquier clase Exportable debe tener este metodo.
+    void exportarTxt();
 }

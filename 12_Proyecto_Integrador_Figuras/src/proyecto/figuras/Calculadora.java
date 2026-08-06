@@ -11,7 +11,8 @@ public class Calculadora {
     }
 
     public boolean verificarSiCabe(Figura figuraA, Figura figuraB) {
-        // Pendiente: se necesita una regla geométrica concreta del ejercicio.
+        // Se conserva como pendiente porque comparar solamente las areas
+        // no demuestra geometricamente que una figura quepa dentro de otra.
         return false;
     }
 }

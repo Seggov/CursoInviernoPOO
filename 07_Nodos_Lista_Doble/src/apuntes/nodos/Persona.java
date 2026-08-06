@@ -1,27 +1,32 @@
 package apuntes.nodos;
 
 public class Persona {
-    private String nombre;
+
     private String rut;
+    private String nombre;
 
-    public Persona(String nombre, String rut) {
-        this.nombre = nombre;
+    public Persona(String rut, String nombre) {
         this.rut = rut;
-    }
-
-    public String getNombre() {
-        return nombre;
+        this.nombre = nombre;
     }
 
     public String getRut() {
         return rut;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public int compareTo(Persona otra) {
-        int salida = this.nombre.compareTo(otra.getNombre());
+        String otroNombre = otra.getNombre();
+        int salida = this.nombre.compareTo(otroNombre);
+
         if (salida == 0) {
-            salida = this.rut.compareTo(otra.getRut());
+            String otroRut = otra.getRut();
+            salida = this.rut.compareTo(otroRut);
         }
+
         return salida;
     }
 

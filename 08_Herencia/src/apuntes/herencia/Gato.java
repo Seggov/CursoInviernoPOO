@@ -4,17 +4,18 @@ public class Gato extends Mascota {
 
     private boolean esNaranja;
 
-    public Gato(String nombre, boolean esNaranja) {
-        super(nombre, "Gato");
+    public Gato(String nombre, String especie, boolean esNaranja) {
+        super(nombre, especie);
         this.esNaranja = esNaranja;
     }
 
     @Override
-    public void hablar() {
-        System.out.println("Miau desde " + VETERINARIA);
+    public void hablando() {
+        System.out.println("Miau en " + VETERINARIA);
     }
 
-    public boolean isEsNaranja() {
-        return esNaranja;
+    public int esNaranjo() {
+        int factor = esNaranja ? 1 : 0;
+        return 200 * factor;
     }
 }

@@ -1,25 +1,74 @@
 # 04 - Matrices
 
-## Idea simple
+## Objetivo
+Entender un array de dos dimensiones y aprender a recorrerlo usando un `for` para las filas y otro para las columnas.
 
-Una matriz es un array de dos dimensiones: **filas y columnas**.
+## Idea simple
+Una matriz puede imaginarse como una tabla:
 
 ```text
-       col0 col1 col2
-fila0   5    7    2
-fila1   9    1    4
+          columna
+          0   1   2
+fila 0   [5] [7] [2]
+fila 1   [9] [1] [4]
 ```
 
-Para recorrerla normalmente se usan dos `for`: uno para filas y otro para columnas.
+Para acceder al `1` usamos:
 
-## Funcionalidades
+```java
+matriz[1][1]
+```
 
-- Pedir dimensiones.
-- Crear la matriz.
-- Llenarla aleatoriamente.
-- Mostrarla.
-- Calcular la suma total.
+Primero se indica la fila y despues la columna.
 
-## Ejercicio
+## Crear una matriz
 
-Agrega un método que muestre la suma de cada fila por separado.
+```java
+int[][] matriz = new int[2][3];
+```
+
+Esto crea 2 filas y 3 columnas.
+
+## Recorrerla
+Se necesitan dos ciclos porque hay dos dimensiones:
+
+```java
+for (int fila = 0; fila < matriz.length; fila++) {
+    for (int columna = 0; columna < matriz[fila].length; columna++) {
+        System.out.println(matriz[fila][columna]);
+    }
+}
+```
+
+- `matriz.length`: cantidad de filas.
+- `matriz[fila].length`: cantidad de columnas de esa fila.
+
+## Que hace este proyecto
+Conserva la estructura que ya utilizabas:
+
+```text
+main()
+   -> iniciar()
+      -> ingresarDimensiones()
+      -> crear matriz
+      -> llenarMatriz()
+      -> mostrarMatriz()
+```
+
+Se agrega `sumarMatriz()` como ejemplo de una operacion sobre todos los datos.
+
+## Ejemplo practico
+Una matriz puede representar las ventas de una tienda:
+
+- cada fila = un dia;
+- cada columna = un producto;
+- cada celda = cantidad vendida.
+
+## Como se ejecuta
+Ejecuta `Main.java`. El programa te pedira filas y columnas por consola.
+
+## Prueba tu mismo
+Agrega un metodo `sumarFila(int fila)` que retorne solamente la suma de una fila.
+
+## Error comun
+Intercambiar filas y columnas. Recuerda: `matriz[fila][columna]`.

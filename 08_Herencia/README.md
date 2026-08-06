@@ -1,30 +1,99 @@
 # 08 - Herencia
 
-## Idea simple
+## Objetivo
+Entender como una clase puede **reutilizar atributos y metodos de otra clase** mediante `extends`.
 
-La herencia permite que una clase hija reutilice lo que ya existe en una clase padre.
+## Ejemplo del proyecto
 
 ```text
-          Mascota
-          /     \
-       Perro    Gato
+             Mascota
+            /       \
+         Perro      Gato
 ```
+
+`Mascota` contiene lo comun:
+
+- nombre;
+- especie;
+- lista de atenciones;
+- `calcularMonto()`.
+
+`Perro` y `Gato` heredan todo eso y agregan o modifican comportamiento propio.
+
+## `extends`
 
 ```java
-public class Perro extends Mascota
+public class Perro extends Mascota {
+}
 ```
 
-## Qué debes mirar
+Se lee: **Perro es una Mascota**.
 
-- `extends`: indica de quién hereda.
-- `super(...)`: llama al constructor de la clase padre.
-- `protected`: visible para las subclases.
-- `@Override`: reemplaza un comportamiento heredado.
+## `super(...)`
+Cuando creamos un `Perro`, la parte que pertenece a `Mascota` tambien debe construirse:
 
-## Ejemplo
+```java
+public Perro(String nombre, String especie) {
+    super(nombre, especie);
+}
+```
 
-`Perro` y `Gato` reciben `nombre` desde `Mascota`, pero cada uno redefine `hablar()`.
+`super(...)` llama al constructor de la clase padre.
 
-## Ejercicio
+## Sobrescribir un metodo
+`Mascota` tiene:
 
-Crea `Ave extends Mascota` y redefine `hablar()`.
+```java
+public void hablando() {
+    System.out.println("La mascota hace un sonido");
+}
+```
+
+El perro puede reemplazar ese comportamiento:
+
+```java
+@Override
+public void hablando() {
+    System.out.println("Ladrando en " + VETERINARIA);
+}
+```
+
+`@Override` ayuda a comprobar que realmente estamos sobrescribiendo un metodo existente.
+
+## `protected`
+
+```java
+protected static final String VETERINARIA = "Los UCNIN";
+```
+
+Permite que las clases hijas accedan a ese miembro. No significa que todos los atributos deban ser `protected`; normalmente se mantiene `private` lo que no necesita acceso directo desde las hijas.
+
+## Ejemplo practico
+En una veterinaria, perros y gatos comparten nombre, especie y atenciones. No tiene sentido copiar `calcularMonto()` en cada clase. Se escribe una sola vez en `Mascota` y las hijas lo reutilizan.
+
+## Lo que conserva de tus apuntes
+Se mantuvieron las ideas y nombres que ya estabas usando:
+
+- `Mascota`
+- `Perro`
+- `Gato`
+- `Atencion`
+- `hablando()`
+- `calcularMonto()`
+- `VETERINARIA`
+- `esNaranjo()`
+
+## Como se ejecuta
+Ejecuta `Main.java`. Se crean un perro y un gato, se agregan atenciones y se calcula el monto acumulado usando el metodo heredado.
+
+## Prueba tu mismo
+Crea:
+
+```java
+public class Ave extends Mascota
+```
+
+y sobrescribe `hablando()`.
+
+## Error comun
+Crear un constructor de la clase hija y olvidar que el constructor del padre necesita parametros. En ese caso debes usar `super(...)`.

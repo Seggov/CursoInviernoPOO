@@ -1,10 +1,13 @@
 package apuntes.referencias;
 
 public class Persona {
-    private String nombre;
 
-    public Persona(String nombre) {
+    private String nombre;
+    private int edad;
+
+    public Persona(String nombre, int edad) {
         this.nombre = nombre;
+        this.edad = edad;
     }
 
     public String getNombre() {
@@ -15,8 +18,16 @@ public class Persona {
         this.nombre = nombre;
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
     @Override
     public String toString() {
-        return nombre;
+        return nombre + " | " + edad + " anios";
     }
 }

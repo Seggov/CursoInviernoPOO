@@ -1,6 +1,7 @@
 package apuntes.nodos;
 
 public class Nodo {
+
     private Persona persona;
     private Nodo sig;
     private Nodo prev;

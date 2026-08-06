@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario implements Exportable {
-    private String nombre;
-    private List<Figura> figuras = new ArrayList<>();
 
-    public Usuario(String nombre) {
-        this.nombre = nombre;
+    private String name;
+    private List<Figura> figuras;
+
+    public Usuario(String name) {
+        this.name = name;
+        this.figuras = new ArrayList<>();
     }
 
     public void agregarFigura(Figura figura) {
@@ -22,22 +24,23 @@ public class Usuario implements Exportable {
         return figuras;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
     @Override
     public void exportarTxt() {
-        String archivo = "usuario_" + nombre.toLowerCase() + ".txt";
+        String archivo = "usuario_" + name.toLowerCase() + ".txt";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(archivo))) {
-            writer.println("Usuario: " + nombre);
+            writer.println("Usuario: " + name);
             writer.println("Figuras:");
+
             for (Figura figura : figuras) {
                 writer.println("- " + figura);
             }
         } catch (IOException e) {
-            System.out.println("No se pudo exportar el usuario " + nombre + ": " + e.getMessage());
+            System.out.println("No se pudo exportar el usuario " + name + ": " + e.getMessage());
         }
     }
 }

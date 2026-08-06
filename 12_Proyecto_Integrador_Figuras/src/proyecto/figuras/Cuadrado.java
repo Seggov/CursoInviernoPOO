@@ -1,6 +1,7 @@
 package proyecto.figuras;
 
 public class Cuadrado extends Figura {
+
     private double lado;
 
     public Cuadrado(double lado) {

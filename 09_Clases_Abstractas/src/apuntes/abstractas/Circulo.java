@@ -1,10 +1,11 @@
 package apuntes.abstractas;
 
 public class Circulo extends Figura {
+
     private double radio;
 
     public Circulo(double radio) {
-        super("Círculo");
+        super("Circulo");
         this.radio = radio;
     }
 

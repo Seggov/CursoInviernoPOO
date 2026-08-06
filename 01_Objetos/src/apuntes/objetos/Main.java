@@ -8,7 +8,7 @@ public class Main {
     }
 
     private void iniciar() {
-        // Crear objetos o instancias.
+        // Crear objetos o instancias a partir de la clase Persona.
         Persona persona1 = new Persona("Pedro", 21);
         Persona persona2 = new Persona("Ana", 20);
 
@@ -16,9 +16,9 @@ public class Main {
         System.out.println();
         persona2.mostrarDatos();
 
-        // Nueva funcionalidad: el propio objeto cambia su edad.
+        // El objeto puede modificar su propio estado mediante un metodo.
         persona1.cumplirAnios();
         System.out.println();
-        System.out.println("Después del cumpleaños: " + persona1.getEdad());
+        System.out.println(persona1.getNombre() + " ahora tiene " + persona1.getEdad() + " anios.");
     }
 }
