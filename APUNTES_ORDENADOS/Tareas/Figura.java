@@ -4,5 +4,5 @@ public abstract class Figura implements Exportable{
 	
 	
 	
-	abstract void quedoEnFigura(String firugra);
+	abstract void quedoEnFigura(Puntos x, Puntos y);
 }
