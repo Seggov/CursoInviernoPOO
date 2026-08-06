@@ -23,7 +23,7 @@ public class Main {
         figuras.add(triangulo);
         figuras.add(circulo);
         figuras.add(estrella);
-
+        
         // Usuario es una clase concreta y puede tener varias figuras.
         Usuario userA = new Usuario("Pedro");
         Usuario userB = new Usuario("Vale");
